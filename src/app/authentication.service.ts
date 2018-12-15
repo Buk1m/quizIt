@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
@@ -12,15 +12,14 @@ export interface UserDetails {
   iat: string;
 }
 
-export interface TokenPayload {
-  password: string;
+export class User {
   email: string;
+  password: string;
 }
 
 export interface TokenResponse {
   token: string;
 }
-
 
 @Injectable({
   providedIn: 'root'
@@ -58,22 +57,22 @@ export class AuthenticationService {
       payload = token.split('.')[1];
       payload = window.atob(payload);
       return JSON.parse(payload);
-    }
-    else
+    } else {
       return null;
+    }
   }
 
-  register(tokenPayload: TokenPayload): Observable<any> {
-    return this.http.post('/api/register', tokenPayload).pipe(map((res: TokenResponse) => {
-      if (res) {
-        this.saveToken(res);
-        return res;
-      }
-
-    }));
+  register(user: User): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      })
+    };
+    console.log(JSON.stringify(user));
+    return this.http.post<User>('http://localhost:57900/api/users/register', JSON.stringify(user), httpOptions);
   }
 
-  login(tokenPayload: TokenPayload): Observable<any> {
+  login(tokenPayload: User): Observable<any> {
     return this.http.post('/api/login', tokenPayload).pipe(map((res: TokenResponse) => {
       this.saveToken(res);
       return res;

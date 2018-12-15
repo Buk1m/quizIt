@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {AbstractControl, AsyncValidatorFn, FormBuilder, FormGroup, ValidationErrors, Validators} from '@angular/forms';
 import {Observable} from 'rxjs/internal/Observable';
 import {catchError, mapTo, switchMap} from 'rxjs/operators';
-import {AuthenticationService, TokenPayload} from '../authentication.service';
+import {AuthenticationService, User} from '../authentication.service';
 import {Router} from '@angular/router';
 import {of, timer} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
@@ -51,20 +51,20 @@ export class RegisterComponent {
   }
 
   register() {
-    const tokenPayload: TokenPayload = {
-      password: this.registerForm.controls['password'].value,
+    const tokenPayload: User = {
       email: this.registerForm.controls['email'].value.toString().toLocaleLowerCase(),
+      password: this.registerForm.controls['password'].value,
     };
-
+    console.log(tokenPayload);
     this.authenticationService.register(tokenPayload)
       .subscribe((res) => {
-        if (res.token) {
-          this.router.navigateByUrl('/');
-        }
+        console.log(res);
+        // if (res.Token) {
+        //   this.router.navigateByUrl('/');
+        // }
       }, (err) => {
-        console.log(JSON.stringify(err));
-        this.errorMessage = err.error.error.message;
-        alert(this.errorMessage);
+        console.log(err);
+        // this.errorMessage = err.error.error.message;
       });
   }
 
