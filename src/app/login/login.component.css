@@ -1,0 +1,10 @@
+#login-container{
+  max-width: 400px;
+  height: 400px;
+  flex-grow: 1;
+}
+
+.login-title{
+  color:white;
+
+}

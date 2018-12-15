@@ -1,0 +1,38 @@
+@import "https://use.fontawesome.com/releases/v5.2.0/css/all.css";
+
+h1 {
+  font-family: 'Palanquin Dark', serif !important;
+}
+
+.site-title {
+  font-size: 1.8em;
+  font-weight: 600;
+}
+
+.navbar{
+  margin-left: 35px;
+  margin-top: 20px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  box-shadow: 2px 2px 10px 1px rgba(0,0,0,0.4);
+}
+
+@media all and (max-width: 992px){
+  .navbar{
+    margin-left: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+  }
+
+  .site-title{
+    margin: auto;
+    font-size: 1.3em;
+  }
+  .title{
+    display: inline-block;
+    margin-top: 7px;
+  }
+}

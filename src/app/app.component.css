@@ -1,0 +1,36 @@
+.wrapper {
+  display: flex;
+  flex-flow: row;
+  height: 100%;
+  min-height: 480px;
+}
+
+.page-content {
+  display: flex;
+  flex-flow: column;
+  flex-grow:1 ;
+}
+
+.container-fluid{
+  margin: 0;
+  padding: 0;
+}
+
+@media all and (max-width: 992px) {
+  .wrapper {
+    flex-flow: column;
+  }
+
+  #sidebar {
+    order: 1;
+    margin-top: 0;
+  }
+
+  #navigation {
+    order: 0;
+  }
+
+  #content {
+    order: 2;
+  }
+}

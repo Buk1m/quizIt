@@ -1,0 +1,13 @@
+<div id="sidebar" #sidebar>
+  <ul>
+    <li (click)="sidebar.className= sidebar.className == 'active' ? '' : 'active' ">
+      <h3 id="sidebar-title">MENU</h3>
+      <i class="fas fa-align-left sidebar-toggle"></i></li>
+    <li routerLink="/" routerLinkActive="link-active" onclick="this.blur();" [routerLinkActiveOptions]="{ exact: true }" ><a ><i class="fas fa-home section-icon"></i></a>
+      <div class="sidebar-header">HOME</div>
+    </li>
+    <li routerLink="/quiz-list" routerLinkActive="link-active" onclick="this.blur();"><a><i class="fas fa-dice section-icon"></i></a>
+      <div class="sidebar-header">QUIZ</div>
+    </li>
+  </ul>
+</div>

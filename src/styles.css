@@ -1,1 +1,108 @@
 /* You can add global styles to this file, and also import other style files */
+html {
+  font-family: Palanquin, serif !important;
+  height: 100%;
+}
+
+body {
+  /*background-image: url("https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX6429236.jpg");*/
+  /*background-size: 30%;*/
+  height: 100%;
+}
+
+a{
+  text-decoration: none;
+  color: #119ca3;
+}
+
+a:hover{
+  color: #2d6d89;
+}
+
+.form-input {
+  width: 100%;
+  outline: 0;
+  border: 0;
+  background: transparent;
+  padding: 12px;
+  border-bottom: 1px solid #DDD;
+  caret-color: white;
+  color: white;
+  margin: 0;
+}
+
+.form-input:focus {
+  border-bottom: 1px solid #ddc071;
+}
+
+.font-palanquin {
+  font-family: Palanquin, serif;
+}
+
+.font-palanquin-dark {
+  font-family: "Palanquin Dark", serif;
+}
+
+.bg-main{
+  background-color: rgb(53, 123, 158);
+}
+
+.bg-main-darker{
+  background: #2d6d89;
+}
+
+.bg-grape {
+  background: #94618E
+}
+
+.bg-eggplant {
+  background: #49274A;
+}
+
+.bg-sand {
+  background: #F4DECB;
+}
+
+.bg-shell {
+  background: #F8EEE7;
+}
+
+.bg-navy {
+  background: #18121E;
+}
+
+.bg-gunmetal {
+  background: #233237;
+}
+
+.bg-warm-yellow {
+  background: #EAC67A;
+}
+
+.color-grape {
+  color: #94618E
+}
+
+.color-eggplant {
+  color: #49274A;
+}
+
+.color-sand {
+  color: #F4DECB;
+}
+
+.color-shell {
+  color: #F8EEE7;
+}
+
+.color-navy {
+  color: #18121E;
+}
+
+.color-gunmetal {
+  color: #233237;
+}
+
+.color-warm-yellow {
+  color: #EAC67A;
+}
