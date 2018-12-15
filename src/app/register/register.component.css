@@ -1,8 +1,8 @@
-.login{
-  box-shadow: 0 0 20px 0 rgba(0,0,0,0.3);
+.register {
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
 }
 
-h4{
+h4 {
   height: 20px;
 }
 
@@ -12,16 +12,14 @@ h4{
 }
 
 .sign-up-form {
-    flex-basis: 55%;
-    height: 400px;
-  }
-
-#login-container {
-  flex-grow: 1;
-  height: 400px;
+  flex-basis: 55%;
 }
 
-.login-button {
+#register-container {
+  flex-grow: 1;
+  height: 420px;
+}
+.register-button {
   position: absolute;
   bottom: 50px;
   border-radius: 50px;
@@ -33,44 +31,46 @@ h4{
   background: linear-gradient(to bottom right, rgb(33, 163, 214) 0%, rgb(48, 95, 128) 80%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 
-/* Change the white to any color ;) */
+/* Color when autocomplete ) */
 input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 30px #233237 inset;
   -webkit-text-fill-color: #fcff35;
 }
 
-.error {
+small {
   position: absolute;
 }
 
-.login-inputs{
+.register-inputs {
   padding: 0 30px 50px 30px;
 }
 
-.invalid-form{
+.invalid-form {
   background: linear-gradient(to bottom right, rgb(133, 135, 135) 0%, rgb(77, 77, 82) 80%);
 }
 
-@media  screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .container {
     max-width: 100%;
     padding: 0;
   }
 }
 
-/* Pop  - HoverCSS */
+/* Pop - HoverCSS */
 @-webkit-keyframes hvr-pop {
   50% {
     -webkit-transform: scale(1.2);
     transform: scale(1.2);
   }
 }
+
 @keyframes hvr-pop {
   50% {
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
   }
 }
+
 .hvr-pop {
   display: inline-block;
   vertical-align: middle;
@@ -78,6 +78,7 @@ input:-webkit-autofill {
   transform: perspective(1px) translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 }
+
 .hvr-pop:hover, .hvr-pop:focus, .hvr-pop:active {
   -webkit-animation-name: hvr-pop;
   animation-name: hvr-pop;
@@ -89,10 +90,11 @@ input:-webkit-autofill {
   animation-iteration-count: 1;
 }
 
-button:focus{
+button:focus {
   -webkit-transform: scale(1.2);
   -moz-transform: scale(1.2);
   -ms-transform: scale(1.2);
   -o-transform: scale(1.2);
   transform: scale(1.2);
 }
+
