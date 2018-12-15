@@ -1,0 +1,67 @@
+<div class="container" >
+  <div class="d-flex flex-column flex-md-row register bg-gunmetal">
+
+    <form id="register-container" class="d-flex flex-column align-items-center justify-content-center position-relative"
+          [formGroup]="registerForm" (submit)="register()" >
+      <h4 class="text-white pl-4 pr-4">Create new account</h4>
+      <!-- Email form -->
+      <div class="w-100 register-inputs">
+        <input type="email" class="form-input" autocomplete='email'
+               [ngClass]="email.invalid && email.touched ? 'is-invalid' : ''"
+               formControlName="email" id="inputEmail" aria-describedby="emailHelp"
+               placeholder="Enter email" required>
+        <!-- Error messages -->
+        <div class="position-relative">
+          <small class="text-danger"
+                 *ngIf="email.hasError('required') && email.touched">
+            Email is required.
+          </small>
+          <small class="text-danger"
+                 *ngIf="email.hasError('email') && email.touched">
+            Email must be valid.
+          </small>
+          <small class="text-danger"
+                 *ngIf="email.hasError('emailNotAvailable') && email.touched">
+            Email is already taken.
+          </small>
+        </div>
+        <div style="margin: 25px"></div>
+        <div style="margin: 20px"></div>
+        <!-- Password form -->
+        <input type="password" class="form-input" autocomplete="new-password" formControlName="password" id="password"
+               placeholder="Password"
+               [ngClass]="password.invalid && password.touched ? 'is-invalid' : ''">
+        <!-- Error messages -->
+        <div class="position-relative">
+          <small class="text-danger"
+                 *ngIf="password.invalid && password.touched ">
+            You need to provide password.
+          </small>
+        </div>
+
+        <div style="margin: 25px"></div>
+        <!-- Confirm password form -->
+        <input type="password" class="form-input" autocomplete="new-password" formControlName="confirmPassword"
+               id="confirmPassword"
+               placeholder="Confirm password"
+               [ngClass]="(confirmPassword.hasError('required') || confirmPassword.hasError('MatchPassword')) && confirmPassword.touched ? 'is-invalid' : ''">
+        <!-- Error messages -->
+        <div class="position-relative">
+          <small class="text-danger"
+                 *ngIf="confirmPassword.hasError('required') && confirmPassword.touched ">
+            You need to confirm your password.
+          </small>
+          <small class="text-danger"
+                 *ngIf="confirmPassword.hasError('MatchPassword') && confirmPassword.touched ">
+            Passwords do not match.
+          </small>
+        </div>
+        <div style="margin: 25px"></div>
+      </div>
+      <!--Submit button -->
+      <input type="submit" class="register-button bg-main mt-3" [class.hvr-pop]="registerForm.valid"
+             [class.invalid-form]="!registerForm.valid"
+             [disabled]="!registerForm.valid" value="Create Account">
+    </form>
+  </div>
+</div>
