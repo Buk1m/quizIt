@@ -1,6 +1,6 @@
-<div *ngIf="quiz" class="container">
+<div *ngIf="quiz" class="container d-flex flex-column justify-content-center w-100">
   <app-question-answers *ngFor="let question of quiz.questions"
                         [question]="question" (correctness)="countScore($event)"
   ></app-question-answers>
-  <button class="btn-outline-dark btn" (click)="done()">Done</button>
+  <button class="btn-outline-dark btn m-4" (click)="done()">Done</button>
 </div>
