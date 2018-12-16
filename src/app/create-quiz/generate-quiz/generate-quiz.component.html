@@ -9,13 +9,14 @@
     <label for="quiz-name">Name of your new quiz:</label>
     <input type="text" class="form-input" id="quiz-name" placeholder="Name">
 
-    <p id="private" [class.private]="quiz.access">
-      Private
-    </p>
-    <div (click)="togglePrivate()" class="d-flex flex-row flex-nowrap align-items-center correct m-2">
-      <i class="fas fa-check"></i>
+    <div [class.private-active]="quiz.access" id="private" class="d-flex flex-row flex-nowrap align-items-center ">
+      <span>
+        Private
+      </span>
+      <span id="private-tick" (click)="togglePrivate()" class="correct m-2">
+        <i class="fas fa-check"></i>
+      </span>
     </div>
-
     <!-- CATEGORY CONTROL -->
     <label for="category">Category:</label>
 
