@@ -23,7 +23,6 @@ export class GenerateQuizComponent {
   createQuiz() {
     let userDetails = this.authService.getUserDetails();
     this.quiz.authorId = userDetails._id;
-
     this.quizService.postQuiz(Quiz);
   }
 
