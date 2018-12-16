@@ -24,10 +24,4 @@ export class QuizService {
         return res;
       }));
   }
-
-
-  getQuiz(id: number) {
-    let url = this.baseUrl + '/' + id;
-    return this.http.get<Quiz>(url, {headers: {Authorization: `Bearer ${this.authService.getToken()}`}});
-  }
 }

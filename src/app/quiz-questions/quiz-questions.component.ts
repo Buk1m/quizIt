@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Quiz} from '../model/quiz';
 import {AuthenticationService} from '../authentication.service';
 import {QuizService} from '../quiz.service';
@@ -10,7 +10,7 @@ import {ActivatedRoute, Route} from '@angular/router';
   styleUrls: ['./quiz-questions.component.css']
 })
 export class QuizQuestionsComponent implements OnInit {
-
+  @Input()
   quiz: Quiz;
 
   constructor(private quizService: QuizService,
@@ -18,9 +18,6 @@ export class QuizQuestionsComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    const userDetails = this.authService.getUserDetails();
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.quizService.getQuiz(id).subscribe((quiz: Quiz) => this.quiz = quiz);
   }
 
 }
