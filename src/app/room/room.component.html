@@ -1,0 +1,32 @@
+<div class="container justify-content-center">
+  <div class="row justify-content-center">
+    <button (click)="sendMessage()" class="btn btn-outline-dark w-25 m-3">Enter room!</button>
+  </div>
+  <div class="row justify-content-center">
+    <button (click)="beginGame()" class="btn btn-outline-dark w-25 m-3" [disabled]="!hasEntered">Begin game!</button>
+  </div>
+  <div class="container d-flex justify-content-center" *ngIf="gameStarted">
+    <app-quiz-questions [quiz]="quiz" (score)="sendScore($event);"></app-quiz-questions>
+  </div>
+  <div class="message-box container d-flex " *ngIf="messages.length > 0">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>Messages</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let message of messages; let i = index">
+          <td>{{i + 1}}</td>
+          <td>{{message}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+

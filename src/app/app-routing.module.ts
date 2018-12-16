@@ -2,14 +2,14 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {LoginComponent} from './login/login.component';
-import { GenerateQuizComponent } from './create-quiz/generate-quiz/generate-quiz.component';
+import {GenerateQuizComponent} from './create-quiz/generate-quiz/generate-quiz.component';
 import {RegisterComponent} from './register/register.component';
 import {CreateRoomComponent} from './create-room/create-room.component';
 import {QuestionAnswersComponent} from './quiz-questions/question-answers/question-answers.component';
 import {RoomListComponent} from './room-list/room-list.component';
 import {QuizQuestionsComponent} from './quiz-questions/quiz-questions.component';
 import {AuthenticationGuardService} from './authentication-guard.service';
-
+import {RoomComponent} from './room/room.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent },
@@ -39,7 +39,8 @@ const routes: Routes = [
     path: 'quiz/:id',
     component: QuizQuestionsComponent,
     canActivate: [AuthenticationGuardService]
-  }
+  },
+  {path: 'room/:id', component: RoomComponent},
 ];
 
 @NgModule({

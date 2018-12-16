@@ -1,8 +1,5 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Quiz} from '../model/quiz';
-import {AuthenticationService} from '../authentication.service';
-import {QuizService} from '../quiz.service';
-import {ActivatedRoute, Route} from '@angular/router';
 
 @Component({
   selector: 'app-quiz-questions',
@@ -12,18 +9,18 @@ import {ActivatedRoute, Route} from '@angular/router';
 export class QuizQuestionsComponent implements OnInit {
   @Input()
   quiz: Quiz;
+  value = .0;
 
   @Output() score: EventEmitter<number> = new EventEmitter<number>();
 
-  time = 0;
+  time = .0;
   interval;
 
-  constructor(private quizService: QuizService,
-              private authService: AuthenticationService,
-              private route: ActivatedRoute) { }
+  constructor() {
+  }
 
   ngOnInit() {
-    const userDetails = this.authService.getUserDetails();
+    console.log(this.quiz);
     this.startTimer();
   }
 
@@ -37,12 +34,13 @@ export class QuizQuestionsComponent implements OnInit {
     clearInterval(this.interval);
   }
 
-
-  countScore($event: number) {
-    this.score.emit($event / this.time);
+  countScore(event: number) {
+    this.value += event / (this.time !== 0 ? this.time : 1);
+    console.log(this.value);
   }
 
   done() {
     this.pauseTimer();
+    this.score.emit(this.value);
   }
 }

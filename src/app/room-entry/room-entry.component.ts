@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Room} from '../model/room';
 import {RoomService} from '../room.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-room-entry',
@@ -12,13 +13,15 @@ export class RoomEntryComponent implements OnInit {
   @Input()
   room: Room;
 
-  constructor(private rs: RoomService) {
+  constructor(private rs: RoomService, private route: Router) {
   }
 
   ngOnInit() {
   }
 
   onJoin(roomId: number) {
-    this.rs.joinRoom(roomId).subscribe(/* TODO move to details view*/);
+    this.rs.joinRoom(roomId).subscribe(() => {
+      this.route.navigateByUrl('room/' + roomId);
+    });
   }
 }

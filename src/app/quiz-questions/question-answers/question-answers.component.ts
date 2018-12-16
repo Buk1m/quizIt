@@ -14,25 +14,29 @@ export class QuestionAnswersComponent implements OnInit {
   @Output()
   correctness: EventEmitter<number> = new EventEmitter<number>();
 
-  checkedCorrect: number;
+  checkedCorrect = .0;
 
-  correctAmount: number;
+  correctAmount = .0;
 
   ngOnInit() {
-    let result = 0;
+    console.log(this.question);
+    let result = .0;
     for (let answer of this.question.answers) {
       if (answer.isCorrect === true) {
         result++;
       }
     }
+    console.log(result);
     this.correctAmount = result;
   }
-  checkAnswer($event: any) {
-    if ($event.selected === 0 && $event.isCorrect) {
-      this.checkedCorrect--;
-    } else if ($event.selected === 1 && $event.isCorrect) {
+
+  checkAnswer(event: any) {
+    if (event.selected && event.isCorrect) {
       this.checkedCorrect++;
+    } else {
+      this.checkedCorrect--;
     }
+    console.log(this.checkedCorrect / this.correctAmount);
     this.correctness.emit(this.checkedCorrect / this.correctAmount);
   }
 }

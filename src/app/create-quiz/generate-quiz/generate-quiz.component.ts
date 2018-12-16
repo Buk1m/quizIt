@@ -40,6 +40,6 @@ export class GenerateQuizComponent implements OnInit {
   }
 
   togglePrivate() {
-    this.quiz.access = !this.quiz.access as number;
+    this.quiz.access = !this.quiz.access;
   }
 }

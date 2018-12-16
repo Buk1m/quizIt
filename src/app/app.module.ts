@@ -18,6 +18,7 @@ import { AnswerComponent } from './quiz-questions/question-answers/answer/answer
 import { QuizQuestionsComponent } from './quiz-questions/quiz-questions.component';
 import { RoomListComponent } from './room-list/room-list.component';
 import { RoomEntryComponent } from './room-entry/room-entry.component';
+import { RoomComponent } from './room/room.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { RoomEntryComponent } from './room-entry/room-entry.component';
     QuizQuestionsComponent,
     RoomListComponent,
     RoomEntryComponent,
+    RoomComponent,
   ],
   imports: [
     BrowserModule,
