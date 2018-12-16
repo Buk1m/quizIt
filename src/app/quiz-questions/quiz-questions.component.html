@@ -2,4 +2,5 @@
   <app-question-answers *ngFor="let question of quiz.questions"
                         [question]="question" (correctness)="countScore($event)"
   ></app-question-answers>
+  <button  (click)="done()"></button>
 </div>
