@@ -22,6 +22,7 @@ export class RoomComponent implements OnInit {
   roomDetails: Room;
   quiz: Quiz;
   gameStarted: boolean;
+  hasEntered = false;
 
   constructor(
     private root: ActivatedRoute,
@@ -38,6 +39,7 @@ export class RoomComponent implements OnInit {
       this._hubConnection.invoke('JoinRoom', 'room' + this.id, data);
     }
     this.messages.push(data);
+    this.hasEntered = true;
   }
 
   ngOnInit() {
@@ -57,12 +59,25 @@ export class RoomComponent implements OnInit {
       const received = `Received: ${data}`;
       this.messages.push(received);
     });
+
+    this._hubConnection.on('sentMethod', (data: any) => {
+      const received = `Received: ${data}`;
+      this.messages.push(received);
+    });
+  }
+
+  sendScore(event) {
+    const data = `User: ${this.auth.getUserDetails().unique_name} has scored: ` + event;
+
+    if (this._hubConnection) {
+      this._hubConnection.invoke('SendMessage', 'room' + this.id, data);
+    }
+    this.messages.push(data);
   }
 
   beginGame() {
-    this.quizService.getQuizDetails(this.roomDetails.quizId).subscribe((res) => {
-      this.quiz = res;
-      debugger
+    this.quizService.getQuizDetails(this.roomDetails.quizId).subscribe((res: Quiz) => {
+      this.quiz = res[0];
       this.gameStarted = true;
     });
   }
