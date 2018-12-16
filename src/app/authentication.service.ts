@@ -7,7 +7,7 @@ import {ResponseContentType} from '@angular/http';
 import {text} from '@angular/core/src/render3';
 
 export interface UserDetails {
-  _id: string;
+  nameid: string;
   username: string;
   email: string;
   exp: number;
