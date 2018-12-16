@@ -1,10 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
-import {Observable, pipe} from 'rxjs';
+import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
-import {ResponseContentType} from '@angular/http';
-import {text} from '@angular/core/src/render3';
 
 export interface UserDetails {
   nameid: string;
@@ -82,12 +80,6 @@ export class AuthenticationService {
         this.saveToken(res);
         return res;
       }));
-  }
-
-  profile(): Observable<any> {
-    let test = this.http.get('http://quizit.azurewebsites.net/api/quizs');
-    return test;
-
   }
 
   public isLoggedIn(): boolean {
