@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Quiz} from '../model/quiz';
-import {HttpClient} from '@angular/common/http';
 import {AuthenticationService} from '../authentication.service';
+import {QuizService} from '../quiz.service';
 
 @Component({
   selector: 'app-quiz-questions',
@@ -12,11 +12,11 @@ export class QuizQuestionsComponent implements OnInit {
 
   quiz: Quiz;
 
-  constructor(private ,
-              private authServcie: AuthenticationService) { }
+  constructor(private quizService: QuizService,
+              private authService: AuthenticationService) { }
 
   ngOnInit() {
-    const userDetails = this.authServcie.getUserDetails();
+    const userDetails = this.authService.getUserDetails();
     const id = +this.route.snapshot.paramMap.get('id');
     this.quiz = this.http.get<Quiz>()
   }
