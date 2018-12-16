@@ -8,12 +8,12 @@ import {map} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class QuizService {
-  baseUrl = 'http://quizit.azurewebsites.net/';
+  baseUrl = 'http://quizit.azurewebsites.net/api/quizs';
   constructor(private http: HttpClient,
               private authService: AuthenticationService) { }
 
   postQuiz(quiz: Quiz) {
-    let url = this.baseUrl + 'api/quizs';
+    let url = this.baseUrl;
     return this.http.post<Quiz>(
       url,
       quiz,
@@ -25,5 +25,9 @@ export class QuizService {
       }));
   }
 
-  
+
+  getQuiz(id: number) {
+    let url = this.baseUrl + '/' + id;
+    return this.http.get<Quiz>(url, {headers: {Authorization: `Bearer ${this.authService.getToken()}`}});
+  }
 }
