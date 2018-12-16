@@ -27,7 +27,7 @@ export class GenerateQuizComponent implements OnInit {
   }
 
   createQuiz() {
-    let userDetails = this.authService.getUserDetails();
+    const userDetails = this.authService.getUserDetails();
     this.quiz.authorId = userDetails.nameid;
     this.quizService.postQuiz(this.quiz)
       .subscribe(() => {

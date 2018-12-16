@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Room} from './model/room';
 import {Observable} from 'rxjs';
 import {AuthenticationService} from './authentication.service';
@@ -20,6 +20,27 @@ export class RoomService {
       .pipe(map((res: Quiz[]) => {
         return res;
       }));
+  }
+
+  getAllRooms(): Observable<Room[]> {
+    return this.http.get('http://quizit.azurewebsites.net/api/rooms',
+      {headers: {Authorization: `Bearer ${this.auth.getToken()}`}})
+      .pipe(map((res: Room[]) => {
+        console.log(res);
+        return res;
+      }));
+  }
+
+  joinRoom(roomId: number): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${this.auth.getToken()}`
+      }),
+    };
+    const userId = this.auth.getUserDetails().nameid;
+    return this.http.post('http://quizit.azurewebsites.net/api/rooms/adduser/' + roomId, userId,
+      httpOptions);
   }
 
   getRoomDetails(id: number): Observable<Room> {

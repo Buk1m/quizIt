@@ -1,0 +1,46 @@
+#category-img {
+  width: 100%;
+  height: 100%;
+  max-width: 250px;
+  max-height: 200px;
+}
+
+.room-title {
+  text-align: center;
+}
+
+.img-background{
+  display: inline-block;
+}
+
+@media all and (max-width: 760px) {
+
+  #category-img {
+    width: 100%;
+    height: 100%;
+    max-width: 250px;
+    max-height: 200px;
+    margin:auto;
+    display: block;
+  }
+
+  .room-card {
+    flex-flow: column;
+    align-items: center;
+  }
+
+  .img-background{
+    background-color: #273444;
+    width: 100%;
+  }
+
+  .status-bg{
+    margin: 22px;
+    padding: 8px;
+    border-radius: 50%;
+    background: rgb(238, 238, 238);
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}

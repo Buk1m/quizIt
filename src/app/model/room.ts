@@ -1,10 +1,10 @@
 import {User} from './user';
 
 export class Room {
-  Name: string;
-  UserId: string;
-  QuizId: number;
-  RoomId: number;
-  Users: User[];
-  MaxUsersCount: number;
+  name: string;
+  userId: string;
+  quizId: number;
+  roomId: number;
+  roomUsers: User[];
+  maxUsersCount: number;
 }

@@ -23,6 +23,7 @@ export class QuizQuestionsComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
+    const userDetails = this.authService.getUserDetails();
     this.startTimer();
   }
 
