@@ -40,9 +40,8 @@ export class AuthenticationService {
   getToken(): string {
     if (!this.token) {
       this.token = localStorage.getItem('mean-token');
-      return this.token;
     }
-    return null;
+    return this.token;
   }
 
   logout(): void {

@@ -63,7 +63,6 @@ export class RegisterComponent {
         }
       }, (err) => {
         console.log(JSON.stringify(err));
-        this.errorMessage = err.error.error.message;
         alert(err);
       });
   }
