@@ -1,8 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import {Observable, pipe} from 'rxjs';
 import {Router} from '@angular/router';
+import {ResponseContentType} from '@angular/http';
+import {text} from '@angular/core/src/render3';
 
 export interface UserDetails {
   _id: string;
@@ -12,9 +14,9 @@ export interface UserDetails {
   iat: string;
 }
 
-export class User {
-  email: string;
-  password: string;
+export class TokenPayload {
+  EMail: string;
+  Password: string;
 }
 
 export interface TokenResponse {
@@ -31,17 +33,17 @@ export class AuthenticationService {
   constructor(private http: HttpClient, private router: Router) {
   }
 
-  saveToken(tokenResponse: TokenResponse): void {
-    localStorage.setItem('mean-token', tokenResponse.token);
-    this.token = tokenResponse.token;
+  saveToken(tokenResponse): void {
+    localStorage.setItem('mean-token', tokenResponse);
+    this.token = tokenResponse;
   }
 
   getToken(): string {
     if (!this.token) {
       this.token = localStorage.getItem('mean-token');
+      return this.token;
     }
-
-    return this.token;
+    return null;
   }
 
   logout(): void {
@@ -62,25 +64,32 @@ export class AuthenticationService {
     }
   }
 
-  register(user: User): Observable<any> {
+  register(tokenPayload: TokenPayload): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       })
     };
-    console.log(JSON.stringify(user));
-    return this.http.post<User>('http://localhost:57900/api/users/register', JSON.stringify(user), httpOptions);
-  }
-
-  login(tokenPayload: User): Observable<any> {
-    return this.http.post('/api/login', tokenPayload).pipe(map((res: TokenResponse) => {
-      this.saveToken(res);
-      return res;
+    return this.http.post('http://quizit.azurewebsites.net/api/users/register', tokenPayload, httpOptions).pipe(map((res) => {
+      if (res) {
+        return res;
+      }
     }));
   }
 
+  login(tokenPayload: TokenPayload): Observable<any> {
+    return this.http.post('http://quizit.azurewebsites.net/api/users/authenticate', tokenPayload, {responseType: 'text'})
+      .pipe(map((res) => {
+        console.log(res);
+        this.saveToken(res);
+        return res;
+      }));
+  }
+
   profile(): Observable<any> {
-    return this.http.get(`/api/profile`, {headers: {Authorization: `Bearer ${this.getToken()}`}});
+    let test = this.http.get('http://quizit.azurewebsites.net/api/quizs');
+    return test;
+
   }
 
   public isLoggedIn(): boolean {

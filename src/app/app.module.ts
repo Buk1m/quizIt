@@ -31,10 +31,6 @@ import {CreateRoomComponent} from './create-room/create-room.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientInMemoryWebApiModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, {dataEncapsulation: false}
-    )
   ],
   providers: [],
   bootstrap: [AppComponent]
