@@ -1,7 +1,7 @@
 import {createQuestion, Question} from './question';
 
 export class Quiz {
-  access: number;
+  access: any;
   authorId: string;
   questions: Question[];
 }

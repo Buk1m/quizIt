@@ -6,8 +6,7 @@ import {Router} from '@angular/router';
 
 export interface UserDetails {
   nameid: string;
-  username: string;
-  email: string;
+  unique_name: string;
   exp: number;
 }
 

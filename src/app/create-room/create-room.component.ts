@@ -32,10 +32,10 @@ export class CreateRoomComponent implements OnInit {
 
   createRoom() {
     const room = new Room;
-    room.Name = this.roomForm.controls['roomName'].value;
-    room.MaxUsersCount = this.roomForm.controls['usersNumber'].value;
-    room.QuizId = this.roomForm.controls['chosenQuiz'].value;
-    room.UserId = this.auth.getUserDetails().nameid;
+    room.name = this.roomForm.controls['roomName'].value;
+    room.maxUsersCount = this.roomForm.controls['usersNumber'].value;
+    room.quizId = this.roomForm.controls['chosenQuiz'].value;
+    room.userId = this.auth.getUserDetails().nameid;
     console.log(room);
     this.roomService.createRoom(room).subscribe(() => this.router.navigateByUrl('/')
     );
