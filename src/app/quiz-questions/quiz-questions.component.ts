@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Quiz} from '../model/quiz';
 import {AuthenticationService} from '../authentication.service';
 import {QuizService} from '../quiz.service';
+import {Route} from '@angular/router';
 
 @Component({
   selector: 'app-quiz-questions',
@@ -13,12 +14,13 @@ export class QuizQuestionsComponent implements OnInit {
   quiz: Quiz;
 
   constructor(private quizService: QuizService,
-              private authService: AuthenticationService) { }
+              private authService: AuthenticationService,
+              private route: Route) { }
 
   ngOnInit() {
     const userDetails = this.authService.getUserDetails();
     const id = +this.route.snapshot.paramMap.get('id');
-    this.quiz = this.http.get<Quiz>()
+    // this.quiz = this.quizService
   }
 
 }
