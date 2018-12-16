@@ -5,6 +5,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AuthenticationService} from '../authentication.service';
 import {Room} from '../model/room';
 import {RoomService} from '../room.service';
+import {Quiz} from '../model/quiz';
+import {QuizService} from '../quiz.service';
 
 @Component({
   selector: 'app-room',
@@ -18,12 +20,15 @@ export class RoomComponent implements OnInit {
   messages: string[] = [];
   id: number;
   roomDetails: Room;
+  quiz: Quiz;
+  gameStarted: boolean;
 
   constructor(
     private root: ActivatedRoute,
     private auth: AuthenticationService,
     private rs: RoomService,
-    private route: Router) {
+    private route: Router,
+    private quizService: QuizService) {
   }
 
   public sendMessage(): void {
@@ -37,7 +42,10 @@ export class RoomComponent implements OnInit {
 
   ngOnInit() {
     this.id = parseInt(this.root.snapshot.paramMap.get('id'), 10);
-    this.rs.getRoomDetails(this.id).subscribe(res => this.roomDetails = res);
+    this.rs.getRoomDetails(this.id).subscribe(res => {
+      this.roomDetails = res;
+    });
+
     this._hubConnection = new signalR.HubConnectionBuilder()
       .withUrl('http://quizit.azurewebsites.net/hub/chat', {skipNegotiation: true, transport: signalR.HttpTransportType.WebSockets})
       .configureLogging(signalR.LogLevel.Information)
@@ -52,6 +60,10 @@ export class RoomComponent implements OnInit {
   }
 
   beginGame() {
-    this.route.navigateByUrl('game' + this.id);
+    this.quizService.getQuizDetails(this.roomDetails.quizId).subscribe((res) => {
+      this.quiz = res;
+      debugger
+      this.gameStarted = true;
+    });
   }
 }

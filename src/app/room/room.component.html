@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-    <button (click)="this.sendMessage()" class="btn btn-outline-dark" >Enter room!</button>
+    <button (click)="this.sendMessage()" class="btn btn-outline-dark">Enter room!</button>
   </div>
   <div class="row" *ngIf="messages.length > 0">
     <div class="table-responsive">
@@ -21,6 +21,9 @@
     </div>
   </div>
   <div class="row">
-    <button (click)="beginGame()" class="btn btn-outline-dark" >Begin game!</button>
+    <button (click)="beginGame()" class="btn btn-outline-dark">Begin game!</button>
   </div>
+</div>
+<div class="container" *ngIf="gameStarted">
+  <app-quiz-questions [quiz]="quiz"></app-quiz-questions>
 </div>
