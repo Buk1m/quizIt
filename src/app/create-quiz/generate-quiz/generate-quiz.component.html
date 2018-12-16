@@ -7,7 +7,7 @@
     </div>
     <!-- NAME CONTROL -->
     <label for="quiz-name">Name of your new quiz:</label>
-    <input type="text" class="form-input" id="quiz-name" placeholder="Name">
+    <input type="text" [(ngModel)]="quiz.name" class="form-input" id="quiz-name" placeholder="Name">
 
     <div [class.private-active]="quiz.access" id="private" class="d-flex flex-row flex-nowrap align-items-center ">
       <span>
