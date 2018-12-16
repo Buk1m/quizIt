@@ -7,6 +7,7 @@ import {RegisterComponent} from './register/register.component';
 import {CreateRoomComponent} from './create-room/create-room.component';
 import {QuestionAnswersComponent} from './quiz-questions/question-answers/question-answers.component';
 import {RoomListComponent} from './room-list/room-list.component';
+import {QuizQuestionsComponent} from './quiz-questions/quiz-questions.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'add-quiz', component: GenerateQuizComponent},
   {path: 'question', component: QuestionAnswersComponent},
   {path: 'rooms', component: RoomListComponent},
+  {path: 'quiz/:id', component: QuizQuestionsComponent}
 ];
 
 @NgModule({
