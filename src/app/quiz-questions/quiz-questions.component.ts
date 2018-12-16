@@ -17,8 +17,6 @@ export class QuizQuestionsComponent implements OnInit {
 
   ngOnInit() {
     const userDetails = this.authService.getUserDetails();
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.quiz = this.http.get<Quiz>()
   }
 
 }
