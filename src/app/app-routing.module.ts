@@ -8,17 +8,38 @@ import {CreateRoomComponent} from './create-room/create-room.component';
 import {QuestionAnswersComponent} from './quiz-questions/question-answers/question-answers.component';
 import {RoomListComponent} from './room-list/room-list.component';
 import {QuizQuestionsComponent} from './quiz-questions/quiz-questions.component';
+import {AuthenticationGuardService} from './authentication-guard.service';
 
 
 const routes: Routes = [
   {path: '', component: HomeComponent },
   {path: 'login', component: LoginComponent },
   {path: 'register', component: RegisterComponent },
-  {path: 'room/create', component: CreateRoomComponent },
-  {path: 'add-quiz', component: GenerateQuizComponent},
-  {path: 'question', component: QuestionAnswersComponent},
-  {path: 'rooms', component: RoomListComponent},
-  {path: 'quiz/:id', component: QuizQuestionsComponent}
+  {
+    path: 'room/create',
+    component: CreateRoomComponent,
+    canActivate: [AuthenticationGuardService]
+  },
+  {
+    path: 'add-quiz',
+    component: GenerateQuizComponent,
+    canActivate: [AuthenticationGuardService]
+  },
+  {
+    path: 'question',
+    component: QuestionAnswersComponent,
+    canActivate: [AuthenticationGuardService]
+  },
+  {
+    path: 'rooms',
+    component: RoomListComponent,
+    canActivate: [AuthenticationGuardService]
+  },
+  {
+    path: 'quiz/:id',
+    component: QuizQuestionsComponent,
+    canActivate: [AuthenticationGuardService]
+  }
 ];
 
 @NgModule({
