@@ -1,6 +1,10 @@
-import { User } from "./user";
+import {User} from './user';
 
 export class Room {
-    name: string;
-    users: User[];
+  Name: string;
+  UserId: string;
+  QuizId: number;
+  RoomId: number;
+  Users: User[];
+  MaxUsersCount: number;
 }

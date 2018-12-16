@@ -43,7 +43,7 @@ export class RegisterComponent {
           Validators.required, Validators.email
         ]
       ]
-    },);
+    }, );
 
     this.registerForm.controls['password'].valueChanges
       .subscribe(() => this.registerForm.controls['confirmPassword'].updateValueAndValidity());
@@ -78,12 +78,6 @@ export class RegisterComponent {
 
   get confirmPassword() {
     return this.registerForm.get('confirmPassword');
-  }
-
-  profile() {
-    this.authenticationService.profile().subscribe((res) => {
-      console.log(res);
-    });
   }
 }
 

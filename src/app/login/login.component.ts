@@ -8,7 +8,7 @@ import {AuthenticationService} from '../authentication.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   loginForm: FormGroup;
 
@@ -19,9 +19,6 @@ export class LoginComponent implements OnInit {
         password: ['', Validators.required]
       }
     );
-  }
-
-  ngOnInit() {
   }
 
   loginUser(): void {
