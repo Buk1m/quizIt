@@ -1,5 +1,5 @@
 <div class="container text-center mb-3 answer-container hvr-grow"
-     (click)="selected = !selected; selection.emit(selected);">
+     (click)="selected = !selected; selection.emit({selected: selected, isCorrect: answer.isCorrect});">
   <div class="answer d-flex align-items-center justify-content-center hvr-shutter-out-horizontal"
        [class.selected]="selected">
     {{answer.content}}

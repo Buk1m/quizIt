@@ -1,4 +1,4 @@
-import {Component, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Question} from '../../model/question';
 
 @Component({
@@ -6,24 +6,33 @@ import {Question} from '../../model/question';
   templateUrl: './question-answers.component.html',
   styleUrls: ['./question-answers.component.css']
 })
-export class QuestionAnswersComponent {
+export class QuestionAnswersComponent implements OnInit {
 
   @Input()
-  question: Question = {
-    content: "ELOELO",
-    urlImage: "",
-    questionType: "Test",
-    answers: [
-      {content: "Test1", isCorrect: false},
-      {content: "Test2", isCorrect: false},
-      {content: "Test3", isCorrect: true},
-    ]
-  };
+  question: Question;
 
   @Output()
-  selectedAnswers: number[] = [];
+  correctness: EventEmitter<number> = new EventEmitter<number>();
 
-  moveOn() {
+  checkedCorrect: number;
 
+  correctAmount: number;
+
+  ngOnInit() {
+    let result = 0;
+    for (let answer of this.question.answers) {
+      if (answer.isCorrect === true) {
+        result++;
+      }
+    }
+    this.correctAmount = result;
+  }
+  checkAnswer($event: any) {
+    if ($event.selected === 0) {
+      this.checkedCorrect--;
+    } else if ($event.selected === 1) {
+      this.checkedCorrect++;
+    }
+    this.correctness.emit(this.checkedCorrect / this.correctAmount);
   }
 }

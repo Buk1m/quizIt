@@ -1,3 +1,5 @@
 <div *ngIf="quiz">
-  <app-question-answers *ngFor="let question of quiz.questions" [question]="question"></app-question-answers>
+  <app-question-answers *ngFor="let question of quiz.questions"
+                        [question]="question" (correctness)="countScore($event)"
+  ></app-question-answers>
 </div>
