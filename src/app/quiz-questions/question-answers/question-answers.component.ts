@@ -28,9 +28,9 @@ export class QuestionAnswersComponent implements OnInit {
     this.correctAmount = result;
   }
   checkAnswer($event: any) {
-    if ($event.selected === 0) {
+    if ($event.selected === 0 && $event.isCorrect) {
       this.checkedCorrect--;
-    } else if ($event.selected === 1) {
+    } else if ($event.selected === 1 && $event.isCorrect) {
       this.checkedCorrect++;
     }
     this.correctness.emit(this.checkedCorrect / this.correctAmount);

@@ -41,4 +41,8 @@ export class QuizQuestionsComponent implements OnInit {
   countScore($event: number) {
     this.score.emit($event / this.time);
   }
+
+  done() {
+    this.pauseTimer();
+  }
 }
