@@ -12,6 +12,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RegisterComponent} from './register/register.component';
 import {CreateRoomComponent} from './create-room/create-room.component';
 import {GenerateQuestionComponent} from './create-quiz/generate-question/generate-question.component';
+import { AddDefinitionComponent } from './add-definition/add-definition.component';
+import { QuestionAnswersComponent } from './quiz-questions/question-answers/question-answers.component';
+import { AnswerComponent } from './quiz-questions/question-answers/answer/answer.component';
+import { QuizQuestionsComponent } from './quiz-questions/quiz-questions.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +28,10 @@ import {GenerateQuestionComponent} from './create-quiz/generate-question/generat
     LoginComponent,
     RegisterComponent,
     CreateRoomComponent,
+    AddDefinitionComponent,
+    QuestionAnswersComponent,
+    AnswerComponent,
+    QuizQuestionsComponent,
   ],
   imports: [
     BrowserModule,
