@@ -16,6 +16,8 @@ import { AddDefinitionComponent } from './add-definition/add-definition.componen
 import { QuestionAnswersComponent } from './quiz-questions/question-answers/question-answers.component';
 import { AnswerComponent } from './quiz-questions/question-answers/answer/answer.component';
 import { QuizQuestionsComponent } from './quiz-questions/quiz-questions.component';
+import { RoomListComponent } from './room-list/room-list.component';
+import { RoomEntryComponent } from './room-entry/room-entry.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { QuizQuestionsComponent } from './quiz-questions/quiz-questions.componen
     QuestionAnswersComponent,
     AnswerComponent,
     QuizQuestionsComponent,
+    RoomListComponent,
+    RoomEntryComponent,
   ],
   imports: [
     BrowserModule,
