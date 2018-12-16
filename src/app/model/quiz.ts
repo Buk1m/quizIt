@@ -1,9 +1,15 @@
-import {Question} from './question';
-import {User} from './user';
+import {createQuestion, Question} from './question';
 
-export interface Quiz {
-  quizId: number;
-  authorId: number;
-  author: User;
+export class Quiz {
+  access: number;
+  authorId: string;
   questions: Question[];
+}
+
+export function createQuiz() {
+  return {
+    access: 0,
+    authorId: '-1',
+    questions: [],
+  };
 }

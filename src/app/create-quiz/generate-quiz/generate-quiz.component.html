@@ -1,0 +1,55 @@
+<div class="container p-4">
+  <!-- CREATE LABEL -->
+  <div class="create-container bg-gunmetal p-4">
+
+    <div class="card-header">
+      <h2>Create new Quiz!</h2>
+    </div>
+    <!-- NAME CONTROL -->
+    <label for="quiz-name">Name of your new quiz:</label>
+    <input type="text" class="form-input" id="quiz-name" placeholder="Name">
+
+    <div [class.private-active]="quiz.access" id="private" class="d-flex flex-row flex-nowrap align-items-center ">
+      <span>
+        Private
+      </span>
+      <span id="private-tick" (click)="togglePrivate()" class="correct m-2">
+        <i class="fas fa-check"></i>
+      </span>
+    </div>
+    <!-- CATEGORY CONTROL -->
+    <label for="category">Category:</label>
+
+    <!--TODO: add expanding scrollable category list-->
+    <!--<div class="no-focus">-->
+      <!--<button class="form-input" id="category"> Choose category <i class="fas fa-caret-down ml-2 float-right"></i>-->
+      <!--</button>-->
+      <!--<ul class="dropdown-menu" role="menu" aria-labelledby="category">-->
+        <!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>-->
+        <!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>-->
+        <!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>-->
+        <!--<li role="presentation" class="divider"></li>-->
+        <!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>-->
+      <!--</ul>-->
+    <!--</div>-->
+  <!--</div>-->
+
+  <div class="create-container bg-gunmetal p-4 mt-4" *ngFor="let question of quiz.questions">
+    <generate-question [model]="question"></generate-question>
+  </div>
+
+  <div class="d-flex flex-row">
+    <div class="create-container bg-gunmetal mt-4 add-circle d-flex flex-grow-1 mr-4">
+      <a (click)="addQuestion()">
+        <i class="fas fa-plus-circle"></i>
+        <span>Add new question </span>
+      </a>
+    </div>
+    <div class="create-container bg-gunmetal mt-4 add-circle d-flex flex-grow-1">
+      <a (click)="createQuiz()">
+        <i class="fas fa-external-link-square-alt"></i>
+        <span>Create new quiz </span>
+      </a>
+    </div>
+  </div>
+</div>

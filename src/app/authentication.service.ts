@@ -5,11 +5,10 @@ import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
 
 export interface UserDetails {
-  _id: string;
+  nameid: string;
   username: string;
   email: string;
   exp: number;
-  iat: string;
 }
 
 export class TokenPayload {

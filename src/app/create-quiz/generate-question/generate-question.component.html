@@ -1,0 +1,31 @@
+<!-- QUESTION CONTROL -->
+<input type="text" class="form-input" id="question" [(ngModel)]="model.content" placeholder="Add new question">
+
+<!-- ANSWERS CONTROL -->
+<label for="answers">Possible answers:</label>
+<div class="d-flex flex-row align-items-center">
+  <ol class="flex-grow-1">
+    <li *ngFor="let answer of model.answers">
+      <div class="d-flex">
+        <input id="answers" [class.correct]="answer.isCorrect" [(ngModel)]="answer.content" class="form-input" placeholder="Answer">
+        <div (click)="tagCorrect(answer)" class="d-flex flex-row flex-nowrap align-items-center correct m-2">
+          <i class="fas fa-check"></i>
+        </div>
+        <div *ngIf="model.answers.length>1"
+             class="d-flex flex-row flex-nowrap align-items-center incorrect m-2"
+             (click)="deleteAnswer(answer)">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+    </li>
+  </ol>
+
+
+</div>
+<p class="link">
+  <button class="bg-main add-answer"
+          (click)="addAnswer()">
+    <i class="fas fa-plus-circle"></i>
+    Add new answer
+  </button>
+</p>

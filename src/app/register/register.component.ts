@@ -85,7 +85,7 @@ export function matchingPasswordsValidator(test: RegisterComponent): AsyncValida
   return (control: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> => {
     return timer(500)
       .pipe(switchMap(() => {
-        if (control.value != test.registerForm.controls['password'].value) {
+        if (control.value !== test.registerForm.controls['password'].value) {
           return of({MatchPassword: true});
         } else {
           return of(null);
