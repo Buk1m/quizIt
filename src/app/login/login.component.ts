@@ -26,12 +26,13 @@ export class LoginComponent implements OnInit {
 
   loginUser(): void {
     this.authenticationService.login({
-      email: this.loginForm.controls['email'].value.toString().toLocaleLowerCase(),
-      password: this.loginForm.controls['password'].value
+      EMail: this.loginForm.controls['email'].value.toString().toLocaleLowerCase(),
+      Password: this.loginForm.controls['password'].value
     }).subscribe(() => {
       this.router.navigateByUrl('/');
     }, (err) => {
       alert('Invalid email or password.');
+      console.log(err);
     });
   }
 
