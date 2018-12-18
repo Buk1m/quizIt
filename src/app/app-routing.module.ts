@@ -10,6 +10,7 @@ import {RoomListComponent} from './room-list/room-list.component';
 import {QuizQuestionsComponent} from './quiz-questions/quiz-questions.component';
 import {AuthenticationGuardService} from './authentication-guard.service';
 import {RoomComponent} from './room/room.component';
+import {AddDefinitionComponent} from './add-definition/add-definition.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent },
@@ -41,6 +42,7 @@ const routes: Routes = [
     canActivate: [AuthenticationGuardService]
   },
   {path: 'room/:id', component: RoomComponent},
+  {path: 'imgUpload', component: AddDefinitionComponent },
 ];
 
 @NgModule({
