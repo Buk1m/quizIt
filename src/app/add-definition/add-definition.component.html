@@ -1,8 +1,10 @@
-<div>
-  <div class="dupa">
+<div (mousedown)="isBtnPressed = true"
+  (mouseup)="isBtnPressed = false"
+  class="flex-nowrap">
+  <div id="selective-area">
         <div class="text">
             <span [ngStyle]="{
-                'left.px':word.boundingBox[0],
+                'left.px': word.boundingBox[0],
                 'top.px': word.boundingBox[1],
                 'width.px': word.boundingBox[2] - word.boundingBox[0],
                 'height.px': word.boundingBox[5] - word.boundingBox[1],
@@ -11,13 +13,11 @@
                 'display': 'block'
                 }"
                   [ngClass]="word.isSelected ? 'selection': ''"
-                  (mouseenter)="mouseEnter(word)"
-                  (mousedown)="isBtnPressed = true"
-                  (mouseup)="isBtnPressed = false"
+                  (mousemove)="mouseEnter(word)"
                 *ngFor="let word of allWords">
               </span>
         </div>
-    <img src="https://i.ytimg.com/vi/jsI3IRM_7kM/maxresdefault.jpg">
+    <img (dragstart)="false" src="https://www.photoshopessentials.com/images/type/text-inside-text/new/photoshop-text-inside-text.gif">
   </div>
 
 </div>

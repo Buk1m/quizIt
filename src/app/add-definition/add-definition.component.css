@@ -1,3 +1,8 @@
+#selective-area {
+  position: relative;
+  display: inline-block;
+}
+
 .text {
   position: absolute;
   z-index: 10;
@@ -8,18 +13,25 @@
   opacity: 0.65;
 }
 
-.highlight {
-  bottom: 15px;
-  left: 15px;
-  border: 1px #1b1e21 solid;
+.inputfile-2 + label {
+  color: #d3394c;
+  border: 2px solid currentColor;
 }
 
-.dupa {
-  position: relative;
+.inputfile + label {
+  max-width: 80%;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
   display: inline-block;
+  overflow: hidden;
+  padding: 0.625rem 1.25rem;
 }
 
-#add-def-canvas {
-  position: absolute;
-  size: inherit;
+img{
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }

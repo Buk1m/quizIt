@@ -24,7 +24,6 @@ interface RecognitionResult {
   encapsulation: ViewEncapsulation.None
 })
 export class AddDefinitionComponent implements OnInit {
-  selectedImage: File;
   displayImage;
   isBtnPressed = false;
   allWords: {
@@ -44,12 +43,12 @@ export class AddDefinitionComponent implements OnInit {
   ngOnInit() {
   }
 
-  // onSelectedFile(event: any) {
-  //   this.selectedImage = event.target.files[0];
-  //   var reader = new FileReader();
-  //   reader.readAsDataURL(this.selectedImage);
-  //   reader.onload = (event) => this.displayImage = event.target.result;
-  // }
+  onSelectedFile(event: any) {
+    const selectedImage = <File>event.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(selectedImage);
+    reader.onload = (event) => this.displayImage = event.target.result;
+  }
 
   mouseEnter(word: any) {
     if (this.isBtnPressed) {
