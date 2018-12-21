@@ -1,0 +1,25 @@
+.text {
+  position: absolute;
+  z-index: 10;
+}
+
+.selection {
+  background: #e83e8c;
+  opacity: 0.65;
+}
+
+.highlight {
+  bottom: 15px;
+  left: 15px;
+  border: 1px #1b1e21 solid;
+}
+
+.dupa {
+  position: relative;
+  display: inline-block;
+}
+
+#add-def-canvas {
+  position: absolute;
+  size: inherit;
+}

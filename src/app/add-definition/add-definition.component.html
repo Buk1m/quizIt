@@ -1,2 +1,23 @@
-<input type="file" (change)="onSelectedFile($event)">
-<img [src]="displayImage"/>
+<div>
+  <div class="dupa">
+        <div class="text">
+            <span [ngStyle]="{
+                'left.px':word.boundingBox[0],
+                'top.px': word.boundingBox[1],
+                'width.px': word.boundingBox[2] - word.boundingBox[0],
+                'height.px': word.boundingBox[5] - word.boundingBox[1],
+                'border': '1px black solid',
+                'position': 'absolute',
+                'display': 'block'
+                }"
+                  [ngClass]="word.isSelected ? 'selection': ''"
+                  (mouseenter)="mouseEnter(word)"
+                  (mousedown)="isBtnPressed = true"
+                  (mouseup)="isBtnPressed = false"
+                *ngFor="let word of allWords">
+              </span>
+        </div>
+    <img src="https://i.ytimg.com/vi/jsI3IRM_7kM/maxresdefault.jpg">
+  </div>
+
+</div>
