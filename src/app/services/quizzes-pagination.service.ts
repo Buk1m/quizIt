@@ -11,7 +11,7 @@ export class QuizzesPaginationService {
   }
 
   getPages(indexFrom: number, indexTo: number): Observable<any> {
-    return this.http.get('api/quizzes-pages/' + indexFrom + '/' + indexTo);
+    return this.http.get('http://quizit.azurewebsites.net/api/quizzes-pages/' + indexFrom + '/' + indexTo);
   }
 
 }

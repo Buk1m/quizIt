@@ -49,13 +49,13 @@ export class RoomListComponent implements OnInit {
 
   // TODO: move to service
   serverCall(page: number): Observable<IServerResponse> {
-    const start = (page - 1) * 5;
+    const start = (page) * 5;
 
-    // TODO: remove mock after server implementation
+    // // TODO: remove mock after server implementation
     return this.rs.getAllRooms().pipe(map((res) => {
       return {total: 10, rooms: res};
     }));
-    // return this.http.get('/api/rooms/page/' + start + '/' + 5).pipe(
+    // return this.http.get('http://quizit.azurewebsites.net/api/rooms/page/' + start + '/' + 5).pipe(
     //   map((res: IServerResponse) => res));
   }
 }
