@@ -51,7 +51,7 @@ export class RoomListComponent implements OnInit {
   serverCall(page: number): Observable<IServerResponse> {
     const start = (page) * 5;
 
-    // // TODO: remove mock after server implementation
+    // TODO: remove mock after server implementation
     return this.rs.getAllRooms().pipe(map((res) => {
       return {total: 10, rooms: res};
     }));
