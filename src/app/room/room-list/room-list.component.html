@@ -1,0 +1,35 @@
+<div id="quiz-list"
+     class="container p-4">
+  <div class="d-flex flex-row flex-wrap justify-content-center">
+    <div class="d-flex flex-grow-1 flex-row justify-content-center">
+      <app-paging (pageChange)="getPage($event)"></app-paging>
+    </div>
+    <button routerLink="/room/create" class="btn btn-secondary">Add quiz</button>
+  </div>
+
+  <div class="dots-loader position-absolute" [hidden]="!loading">
+    <div class="dot-container">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <div class="dot-container">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <div class="dot-container">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+  </div>
+
+  <ul>
+    <li
+      *ngFor="let room of rooms | async | paginate: { id:'server', itemsPerPage: 5, currentPage: p, totalItems: total }"
+      [@fadeInOut] [@enterAnimation]>
+      <app-room-entry [room]="room"></app-room-entry>
+    </li>
+  </ul>
+</div>

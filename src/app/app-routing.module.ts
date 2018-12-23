@@ -1,16 +1,16 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './home/home.component';
-import {LoginComponent} from './authorization/login/login.component';
-import {CreateQuizComponent} from './create-quiz/create-quiz/create-quiz.component';
-import {RegisterComponent} from './authorization/register/register.component';
-import {CreateRoomComponent} from './create-room/create-room.component';
-import {QuestionAnswersComponent} from './quiz-questions/question-answers/question-answers.component';
-import {RoomListComponent} from './room-list/room-list.component';
-import {QuizQuestionsComponent} from './quiz-questions/quiz-questions.component';
+import {LoginComponent} from './user/login/login.component';
+import {CreateQuizComponent} from './quiz/quiz-create/create-quiz.component';
+import {RegisterComponent} from './user/register/register.component';
+import {CreateRoomComponent} from './room/room-create/create-room.component';
+import {QuestionAnswersComponent} from './quiz/quiz-questions/question-answers/question-answers.component';
+import {RoomListComponent} from './room/room-list/room-list.component';
+import {QuizQuestionsComponent} from './quiz/quiz-questions/quiz-questions.component';
 import {AuthenticationGuardService} from './services/authentication-guard.service';
-import {RoomComponent} from './room/room.component';
-import {ProfileComponent} from './profile/profile.component';
+import {RoomComponent} from './room/room-view/room.component';
+import {ProfileComponent} from './user/profile/profile.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},

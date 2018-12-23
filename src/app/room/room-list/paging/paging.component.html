@@ -1,0 +1,20 @@
+<pagination-template #p="paginationApi" [id]="'server'" [maxSize]="5"
+                     (pageChange)="pageChange.emit($event)">
+  <div class="d-flex flex-row">
+    <ul>
+      <li class="hvr-glow" (click)="p.previous()"> {{previousLabel}}</li>
+      <li *ngFor="let page of p.pages; "
+          class="bottom-shadow top-shadow hvr-glow hvr-back-pulse"
+          (click)="p.setCurrent(page.value);"
+          [class.active]="p.getCurrent() === page.value">
+        {{page.value}}
+      </li>
+      <li class="darken page-number"><input placeholder=". . ." class="page-input" #pageInput
+                 (keydown)="$event.key === 'Enter' ?  changePage(p,+pageInput.value) : '' "
+      (focusout)="pageInput.value='';">
+      </li>
+      <li class="hvr-glow" (click)="p.next()">{{nextLabel}}</li>
+    </ul>
+
+  </div>
+</pagination-template>
