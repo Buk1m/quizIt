@@ -35,7 +35,7 @@ export class LoginComponent {
 
   loginUser(): void {
     this.authenticationService.login({
-      EMail: this.username.toString().toLocaleLowerCase(),
+      EMail: this.username.value.toString().toLocaleLowerCase(),
       Password: this.password.value
     }).subscribe(() => {
       this.router.navigateByUrl('/');
