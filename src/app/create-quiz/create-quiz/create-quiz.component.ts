@@ -7,10 +7,10 @@ import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-generate-quiz',
-  templateUrl: './generate-quiz.component.html',
-  styleUrls: ['./generate-quiz.component.css'],
+  templateUrl: './create-quiz.component.html',
+  styleUrls: ['./create-quiz.component.css'],
 })
-export class GenerateQuizComponent implements OnInit {
+export class CreateQuizComponent implements OnInit {
   quiz: Quiz = createQuiz();
 
   ngOnInit() {

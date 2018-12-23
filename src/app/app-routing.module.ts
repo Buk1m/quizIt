@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {LoginComponent} from './authorization/login/login.component';
-import {GenerateQuizComponent} from './create-quiz/generate-quiz/generate-quiz.component';
+import {CreateQuizComponent} from './create-quiz/create-quiz/create-quiz.component';
 import {RegisterComponent} from './authorization/register/register.component';
 import {CreateRoomComponent} from './create-room/create-room.component';
 import {QuestionAnswersComponent} from './quiz-questions/question-answers/question-answers.component';
@@ -28,7 +28,7 @@ const routes: Routes = [
   },
   {
     path: 'add-quiz',
-    component: GenerateQuizComponent,
+    component: CreateQuizComponent,
     canActivate: [AuthenticationGuardService]
   },
   {
