@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {Router} from '@angular/router';
 
 export interface UserDetails {
@@ -88,5 +88,11 @@ export class AuthenticationService {
     } else {
       return false;
     }
+  }
+
+  profile(): Observable<any> {
+    return of(this.getUserDetails());
+    // TODO: request data when endpoint will be added on server side
+    // return this.http.get(`/api/profile`, {headers: {Authorization: `Bearer ${this.getToken()}`}});
   }
 }

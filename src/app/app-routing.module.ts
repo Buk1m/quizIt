@@ -10,11 +10,17 @@ import {RoomListComponent} from './room-list/room-list.component';
 import {QuizQuestionsComponent} from './quiz-questions/quiz-questions.component';
 import {AuthenticationGuardService} from './authentication-guard.service';
 import {RoomComponent} from './room/room.component';
+import {ProfileComponent} from './profile/profile.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent },
-  {path: 'login', component: LoginComponent },
-  {path: 'register', component: RegisterComponent },
+  {path: '', component: HomeComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthenticationGuardService]
+  },
   {
     path: 'room/create',
     component: CreateRoomComponent,

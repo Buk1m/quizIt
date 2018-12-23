@@ -20,6 +20,7 @@ import { RoomListComponent } from './room-list/room-list.component';
 import { RoomEntryComponent } from './room-entry/room-entry.component';
 import { RoomComponent } from './room/room.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ProfileComponent} from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     RoomListComponent,
     RoomEntryComponent,
     RoomComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
