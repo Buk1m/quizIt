@@ -2,22 +2,46 @@
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
 }
 
+.book-image {
+  background: url("../../../assets/flying-book.jpg") no-repeat center;
+  background-size: cover;
+  filter: url(#monochrome);
+  height: 500px;
+  width: 100%;
+  position: absolute;
+  z-index: 0;
+}
+
 h4 {
   height: 20px;
 }
 
+.log-in-title {
+  z-index: 1;
+  position: absolute;
+  top: 30px;
+  color: #fcff35;
+  text-align: center;
+}
+
+.sign-in-title {
+  position: absolute;
+  top: 30px;
+}
+
 .container {
-  max-width: 600px;
+  max-width: 900px;
   padding: 50px 40px;
 }
 
 .sign-up-form {
   flex-basis: 55%;
+  height: 500px;
 }
 
 #register-container {
   flex-grow: 1;
-  height: 420px;
+  height: 500px;
 }
 .register-button {
   position: absolute;
@@ -31,7 +55,27 @@ h4 {
   background: linear-gradient(to bottom right, rgb(33, 163, 214) 0%, rgb(48, 95, 128) 80%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 
-/* Color when autocomplete ) */
+.log-in-button {
+  position: absolute;
+  border-radius: 50px;
+  padding: 12px;
+  outline: 0;
+  background: #fcff35;
+  border: 1px solid #fcff35;
+  color: black;
+  z-index: 2;
+  bottom: 30px;
+  width: 120px;
+}
+
+.log-in-button:hover {
+  transition-property: color, background;
+  transition-duration: 0.5s;
+  background: #fcff35;
+  color: black;
+}
+
+/* Change the white to any color ;) */
 input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 30px #233237 inset;
   -webkit-text-fill-color: #fcff35;
@@ -50,13 +94,28 @@ small {
 }
 
 @media screen and (max-width: 768px) {
+  .sign-up-form {
+    order: 1;
+  }
+
+  #register-container {
+    order: 0;
+  }
+
   .container {
     max-width: 100%;
     padding: 0;
   }
 }
 
-/* Pop - HoverCSS */
+@media screen and (max-width: 992px) {
+  .sign-up-form {
+    flex-basis: 45%;
+  }
+
+}
+
+/* Pop */
 @-webkit-keyframes hvr-pop {
   50% {
     -webkit-transform: scale(1.2);

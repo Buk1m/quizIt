@@ -1,16 +1,19 @@
 import {Component} from '@angular/core';
 import {AbstractControl, AsyncValidatorFn, FormBuilder, FormGroup, ValidationErrors, Validators} from '@angular/forms';
 import {Observable} from 'rxjs/internal/Observable';
-import {AuthenticationService, TokenPayload} from '../authentication.service';
+import {AuthenticationService, TokenPayload} from '../../authentication.service';
 import {Router} from '@angular/router';
 import {of, timer} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
 import {switchMap} from 'rxjs/operators';
+import {appear, fade} from '../../animations';
+
+declare var $: any;
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
+  animations: [appear, fade],
 })
 export class RegisterComponent {
 
@@ -21,7 +24,6 @@ export class RegisterComponent {
     private formBuilder: FormBuilder,
     private authenticationService: AuthenticationService,
     private router: Router,
-    private http: HttpClient
   ) {
     this.registerForm = formBuilder.group({
       password: [
@@ -50,6 +52,10 @@ export class RegisterComponent {
 
   }
 
+  openModal() {
+    $('#registerError').modal('show');
+  }
+
   register() {
     const tokenPayload: TokenPayload = {
       EMail: this.registerForm.controls['email'].value.toString().toLocaleLowerCase(),
@@ -62,8 +68,8 @@ export class RegisterComponent {
           this.router.navigateByUrl('/login');
         }
       }, (err) => {
-        console.log(JSON.stringify(err));
-        alert(err);
+        this.errorMessage = JSON.parse(err.error).message;
+        this.openModal();
       });
   }
 
