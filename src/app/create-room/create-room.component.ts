@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {RoomService} from '../room.service';
+import {RoomService} from '../services/room.service';
 import {Room} from '../model/room';
 import {Quiz} from '../model/quiz';
 import {Router} from '@angular/router';
-import {AuthenticationService} from '../authentication.service';
+import {AuthenticationService} from '../services/authentication.service';
 
 @Component({
   selector: 'app-create-room',

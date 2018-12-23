@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {AbstractControl, AsyncValidatorFn, FormBuilder, FormGroup, ValidationErrors, Validators} from '@angular/forms';
 import {Observable} from 'rxjs/internal/Observable';
-import {AuthenticationService, TokenPayload} from '../../authentication.service';
+import {AuthenticationService, TokenPayload} from '../../services/authentication.service';
 import {Router} from '@angular/router';
 import {of, timer} from 'rxjs';
 import {switchMap} from 'rxjs/operators';

@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Room} from './model/room';
 import {Observable} from 'rxjs';
 import {AuthenticationService} from './authentication.service';
-import {Quiz} from './model/quiz';
+import {Quiz} from '../model/quiz';
 import {map} from 'rxjs/operators';
+import {Room} from '../model/room';
 
 @Injectable({
   providedIn: 'root'

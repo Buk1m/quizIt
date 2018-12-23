@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Quiz} from './model/quiz';
+import {Quiz} from '../model/quiz';
 import {HttpClient} from '@angular/common/http';
 import {AuthenticationService} from './authentication.service';
 import {map} from 'rxjs/operators';

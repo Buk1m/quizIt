@@ -2,11 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {HubConnection} from '@aspnet/signalr';
 import * as signalR from '@aspnet/signalr';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AuthenticationService} from '../authentication.service';
+import {AuthenticationService} from '../services/authentication.service';
 import {Room} from '../model/room';
-import {RoomService} from '../room.service';
+import {RoomService} from '../services/room.service';
 import {Quiz} from '../model/quiz';
-import {QuizService} from '../quiz.service';
+import {QuizService} from '../services/quiz.service';
 
 @Component({
   selector: 'app-room',

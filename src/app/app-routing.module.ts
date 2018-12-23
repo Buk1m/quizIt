@@ -8,7 +8,7 @@ import {CreateRoomComponent} from './create-room/create-room.component';
 import {QuestionAnswersComponent} from './quiz-questions/question-answers/question-answers.component';
 import {RoomListComponent} from './room-list/room-list.component';
 import {QuizQuestionsComponent} from './quiz-questions/quiz-questions.component';
-import {AuthenticationGuardService} from './authentication-guard.service';
+import {AuthenticationGuardService} from './services/authentication-guard.service';
 import {RoomComponent} from './room/room.component';
 import {ProfileComponent} from './profile/profile.component';
 
