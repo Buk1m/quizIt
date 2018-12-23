@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './home/home.component';
-import {LoginComponent} from './login/login.component';
+import {LoginComponent} from './authorization/login/login.component';
 import {GenerateQuizComponent} from './create-quiz/generate-quiz/generate-quiz.component';
-import {RegisterComponent} from './register/register.component';
+import {RegisterComponent} from './authorization/register/register.component';
 import {CreateRoomComponent} from './create-room/create-room.component';
 import {QuestionAnswersComponent} from './quiz-questions/question-answers/question-answers.component';
 import {RoomListComponent} from './room-list/room-list.component';

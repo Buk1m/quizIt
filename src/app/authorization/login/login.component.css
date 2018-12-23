@@ -2,19 +2,41 @@
   box-shadow: 0 0 20px 0 rgba(0,0,0,0.3);
 }
 
+.book-image {
+  background: url("../../../assets/idea-lamp.jpg") no-repeat center;
+  background-size: cover;
+  filter: url(#monochrome);
+  height: 400px;
+  width: 100%;
+  position: absolute;
+  z-index: 0;
+}
 h4{
   height: 20px;
 }
 
+.sign-up-title {
+  z-index: 1;
+  position: absolute;
+  top: 220px;
+  color: #fcff35;
+  text-align:center;
+}
+
+.sign-in-title{
+  position:absolute;
+  top: 30px;
+}
+
 .container {
-  max-width: 600px;
+  max-width: 900px;
   padding: 50px 40px;
 }
 
 .sign-up-form {
-    flex-basis: 55%;
-    height: 400px;
-  }
+  flex-basis: 55%;
+  height: 400px;
+}
 
 #login-container {
   flex-grow: 1;
@@ -31,6 +53,25 @@ h4{
   width: 200px;
   color: white;
   background: linear-gradient(to bottom right, rgb(33, 163, 214) 0%, rgb(48, 95, 128) 80%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+.sign-up {
+  position: absolute;
+  border-radius: 50px;
+  padding: 12px;
+  outline: 0;
+  background: transparent;
+  border: 1px solid #fcff35;
+  color: #fcff35;
+  z-index: 2;
+  bottom: 50px;
+}
+
+.sign-up:hover {
+  transition-property: color, background;
+  transition-duration: 0.5s;
+  background: #fcff35;
+  color: black;
 }
 
 /* Change the white to any color ;) */
@@ -52,13 +93,27 @@ input:-webkit-autofill {
 }
 
 @media  screen and (max-width: 768px) {
+  .sign-up-form{
+    order:1;
+  }
+
+  #login-container{
+    order: 0;
+  }
   .container {
     max-width: 100%;
     padding: 0;
   }
 }
+@media  screen and (max-width: 992px) {
+  .sign-up-form{
+    flex-basis: 45%;
+  }
 
-/* Pop  - HoverCSS */
+}
+
+
+/* Pop */
 @-webkit-keyframes hvr-pop {
   50% {
     -webkit-transform: scale(1.2);

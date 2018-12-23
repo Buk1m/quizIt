@@ -7,9 +7,9 @@ import {HomeComponent} from './home/home.component';
 import {AppRoutingModule} from './app-routing.module';
 import {SidebarComponent} from './sidebar/sidebar.component';
 import {TopbarComponent} from './topbar/topbar.component';
-import {LoginComponent} from './login/login.component';
+import {LoginComponent} from './authorization/login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {RegisterComponent} from './register/register.component';
+import {RegisterComponent} from './authorization/register/register.component';
 import {CreateRoomComponent} from './create-room/create-room.component';
 import {GenerateQuestionComponent} from './create-quiz/generate-question/generate-question.component';
 import { AddDefinitionComponent } from './add-definition/add-definition.component';
@@ -19,6 +19,7 @@ import { QuizQuestionsComponent } from './quiz-questions/quiz-questions.componen
 import { RoomListComponent } from './room-list/room-list.component';
 import { RoomEntryComponent } from './room-entry/room-entry.component';
 import { RoomComponent } from './room/room.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { RoomComponent } from './room/room.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

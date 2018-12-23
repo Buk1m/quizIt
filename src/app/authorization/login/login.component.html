@@ -1,0 +1,88 @@
+<div class="container" [@enterAnimation]>
+  <div class="d-flex flex-column flex-md-row login bg-gunmetal">
+
+    <!-- IMAGE -->
+    <div class="flex-shrink-0 sign-up-form position-relative d-flex flex-wrap justify-content-center">
+      <h4 class="position-relative sign-up-title p-2" >Join our community!</h4>
+
+      <div class="book-image"></div>
+      <button routerLink="/register" type="submit" class="sign-up align-self-end hvr-pop">Sign up & start solving!
+      </button>
+    </div>
+
+    <!--LOGIN FORM-->
+
+    <form #login id="login-container" class="d-flex flex-column align-items-center justify-content-center position-relative"
+          [formGroup]="loginForm"
+          (ngSubmit)="loginUser()"
+          [@enterAnimation]>
+
+      <h4 class="text-white pl-4 pr-4 sign-in-title">Sign into your account</h4>
+
+      <!-- Username form -->
+
+      <div class="w-100 login-inputs">
+        <input formControlName="username" class="form-input" id="inputLogin"
+               aria-describedby="emailHelp"
+               placeholder="E-mail" autocomplete="on"
+               [ngClass]="!username.valid && username.touched ? 'is-invalid' : ''">
+        <!-- Error messages -->
+        <div class="position-relative">
+          <small class="text-danger error" [@fadeInOut]
+                 *ngIf="!loginForm.controls['username'].valid && loginForm.controls['username'].touched">
+            Username must be specified.
+          </small>
+        </div>
+        <div style="margin: 25px"></div>
+
+        <input formControlName="password" type="password" class="form-input" id="InputPassword" placeholder="Password"
+               autocomplete="password" [ngClass]="!password.valid && password.touched ? 'is-invalid' : ''">
+        <!-- Error messages -->
+        <div class="position-relative">
+          <small class="text-danger error" [@fadeInOut]
+                 *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched">
+            You need to provide password.
+          </small>
+        </div>
+
+      </div>
+
+      <!-- Submit button -->
+      <input type="submit" class="login-button bg-main mt-3" [class.hvr-pop]="loginForm.valid" [class.invalid-form]="!loginForm.valid"
+             [disabled]="!loginForm.valid" value="Sign in!">
+    </form>
+  </div>
+</div>
+
+<!--TODO: move it to separate reusable component-->
+<!-- Modal with login errors -->
+<div class="modal fade" id="loginError" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{errorMessage}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Image filter -->
+<svg hidden>
+  <filter id="monochrome" color-interpolation-filters="sRGB"
+          x="0" y="0" height="100%" width="100%">
+    <feColorMatrix
+      type="matrix"
+      values="0.5 0.1 -0.3 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 -0.04">
+    </feColorMatrix>
+  </filter>
+</svg>
