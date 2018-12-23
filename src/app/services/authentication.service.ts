@@ -92,7 +92,7 @@ export class AuthenticationService {
 
   profile(): Observable<any> {
     return of(this.getUserDetails());
-    // TODO: request data when endpoint will be added on server side
+    // FIXME: request data when endpoint will be added on server side
     // return this.http.get(`/api/profile`, {headers: {Authorization: `Bearer ${this.getToken()}`}});
   }
 }

@@ -5,11 +5,13 @@ import {Room} from '../../model/room';
 import {Quiz} from '../../model/quiz';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../../services/authentication.service';
+import {appear} from '../../animations';
 
 @Component({
   selector: 'app-create-room',
   templateUrl: './create-room.component.html',
-  styleUrls: ['./create-room.component.css']
+  styleUrls: ['./create-room.component.css'],
+  animations: [appear]
 })
 export class CreateRoomComponent implements OnInit {
 

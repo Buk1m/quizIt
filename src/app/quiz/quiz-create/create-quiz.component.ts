@@ -4,11 +4,13 @@ import {createQuiz, Quiz} from '../../model/quiz';
 import {AuthenticationService} from '../../services/authentication.service';
 import {QuizService} from '../../services/quiz.service';
 import {Router} from '@angular/router';
+import {appear} from '../../animations';
 
 @Component({
   selector: 'app-create-quiz',
   templateUrl: './create-quiz.component.html',
   styleUrls: ['./create-quiz.component.css'],
+  animations: [appear]
 })
 export class CreateQuizComponent implements OnInit {
   quiz: Quiz = createQuiz();
