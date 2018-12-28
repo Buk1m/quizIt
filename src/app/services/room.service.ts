@@ -5,17 +5,20 @@ import {AuthenticationService} from './authentication.service';
 import {Quiz} from '../model/quiz';
 import {map} from 'rxjs/operators';
 import {Room} from '../model/room';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoomService {
 
+  apiUrl = environment.apiUrl;
+
   constructor(private http: HttpClient, private auth: AuthenticationService) {
   }
 
   getAllQuizzes(): Observable<Quiz[]> {
-    return this.http.get('http://quizit.azurewebsites.net/api/quizs',
+    return this.http.get(this.apiUrl + 'quizs',
       {headers: {Authorization: `Bearer ${this.auth.getToken()}`}})
       .pipe(map((res: Quiz[]) => {
         return res;
@@ -23,7 +26,7 @@ export class RoomService {
   }
 
   getAllRooms(): Observable<Room[]> {
-    return this.http.get('http://quizit.azurewebsites.net/api/rooms',
+    return this.http.get(this.apiUrl + 'rooms',
       {headers: {Authorization: `Bearer ${this.auth.getToken()}`}})
       .pipe(map((res: Room[]) => {
         console.log(res);
@@ -39,12 +42,12 @@ export class RoomService {
       }),
     };
     const userId = this.auth.getUserDetails().nameid;
-    return this.http.post('http://quizit.azurewebsites.net/api/rooms/adduser/' + roomId, userId,
+    return this.http.post(this.apiUrl + 'rooms/adduser/' + roomId, userId,
       httpOptions);
   }
 
   getRoomDetails(id: number): Observable<Room> {
-    return this.http.get('http://quizit.azurewebsites.net/api/rooms/' + id,
+    return this.http.get(this.apiUrl + 'rooms/' + id,
       {headers: {Authorization: `Bearer ${this.auth.getToken()}`}})
       .pipe(map((res: Room) => {
         return res;
@@ -52,7 +55,7 @@ export class RoomService {
   }
 
   createRoom(room: Room): Observable<any> {
-    return this.http.post<Room>('http://quizit.azurewebsites.net/api/rooms/addroom',
+    return this.http.post<Room>(this.apiUrl + 'rooms/addroom',
       room, {headers: {Authorization: `Bearer ${this.auth.getToken()}`}});
   }
 }

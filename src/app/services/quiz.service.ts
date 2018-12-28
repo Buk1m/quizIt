@@ -3,19 +3,20 @@ import {Quiz} from '../model/quiz';
 import {HttpClient} from '@angular/common/http';
 import {AuthenticationService} from './authentication.service';
 import {map} from 'rxjs/operators';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuizService {
-  baseUrl = 'http://quizit.azurewebsites.net/api/quizs';
+  apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient,
               private authService: AuthenticationService) {
   }
 
   postQuiz(quiz: Quiz) {
-    const url = this.baseUrl;
+    const url = this.apiUrl;
     return this.http.post<Quiz>(
       url,
       quiz,
@@ -28,7 +29,7 @@ export class QuizService {
   }
 
   getQuizDetails(quizId) {
-    return this.http.get('http://quizit.azurewebsites.net/api/quizs/' + quizId,
+    return this.http.get(this.apiUrl + 'quizs/' + quizId,
       {headers: {Authorization: `Bearer ${this.authService.getToken()}`}})
       .pipe(map((res: Quiz) => {
       return res;

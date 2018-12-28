@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
 import {Router} from '@angular/router';
+import { environment } from '../../environments/environment';
 
 export interface UserDetails {
   nameid: string;
@@ -21,6 +22,7 @@ export class TokenPayload {
 export class AuthenticationService {
 
   token: string;
+  apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient, private router: Router) {
   }
@@ -61,7 +63,7 @@ export class AuthenticationService {
         'Content-Type': 'application/json',
       })
     };
-    return this.http.post('http://quizit.azurewebsites.net/api/users/register', tokenPayload, httpOptions).pipe(map((res) => {
+    return this.http.post(this.apiUrl + 'users/register', tokenPayload, httpOptions).pipe(map((res) => {
       if (res) {
         return res;
       }
@@ -69,7 +71,7 @@ export class AuthenticationService {
   }
 
   login(tokenPayload: TokenPayload): Observable<any> {
-    return this.http.post('http://quizit.azurewebsites.net/api/users/authenticate', tokenPayload, {responseType: 'text'})
+    return this.http.post(  this.apiUrl + 'users/authenticate', tokenPayload, {responseType: 'text'})
       .pipe(map((res) => {
         console.log(res);
         this.saveToken(res);
