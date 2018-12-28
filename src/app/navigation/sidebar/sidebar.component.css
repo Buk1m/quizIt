@@ -1,0 +1,183 @@
+/*TODO: try to make it cleaner and simpler*/
+#sidebar {
+  height: 100%;
+  background-color: rgb(53, 123, 158);
+  color: white;
+  width: 250px;
+  -webkit-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#sidebar ul li {
+  padding: 20px;
+  height: 80px;
+}
+
+#sidebar.active ul li {
+  padding: 20px 8px;
+}
+
+#sidebar.active {
+  width: 100px;
+}
+
+#sidebar.active .sidebar-toggle {
+  transform: rotate(0deg);
+}
+
+#sidebar.active #sidebar-title {
+  transform: translateX(-50px) scale(0) ;
+  font-size: 0;
+}
+
+#sidebar.active .sidebar-header {
+  transform: translateX(75px) scale(0) ;
+  font-size: 0;
+  margin-left: 0;
+}
+
+
+.sidebar-toggle {
+  margin-left: 22px;
+  font-size: 2.4em;
+  transform: translateX(75px) rotate(180deg);
+  display: inline-block;
+}
+
+.section-icon {
+  font-size: 2em;
+  margin-left: 19px;
+  display: inline-block;
+  width: 40px;
+}
+
+#sidebar-title {
+  display: inline-block;
+  font-family: 'Jua', sans-serif, Serif;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-header{
+  font-family: 'Jua', sans-serif, Serif;
+  display: inline-block;
+  margin-left: 35px;
+}
+
+
+/*TODO: change animation for mobile, learn how to disable animation or move it to Angular animations!*/
+/* Bounce To Right */
+#sidebar ul li {
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+#sidebar ul li:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #315577;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: 0 50%;
+  transform-origin: 0 50%;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+#sidebar ul li:hover, #sidebar ul li:focus{
+  color: rgb(255, 234, 123);
+}
+#sidebar ul li:hover:before, #sidebar ul li:focus, #sidebar ul li:active:before {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+  -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+  transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+}
+
+/*transitions for animations TODO: make it more elegant if possible*/
+#sidebar, .sidebar-toggle, .sidebar-header, .section-icon, ul li:hover, #sidebar-title, #sidebar ul li {
+  -webkit-transition: all 0.6s;
+  -moz-transition: all 0.6s;
+  -o-transition: all 0.6s;
+  transition: all 0.6s;
+}
+
+#sidebar.active, .sidebar-toggle, .sidebar-header, .section-icon, #sidebar-title, ul li {
+  -webkit-transition: all 0.6s;
+  -moz-transition: all 0.6s;
+  -o-transition: all 0.6s;
+  transition: all 0.6s;
+}
+
+@media all and (max-width: 992px){
+  #sidebar {
+    width: 100%;
+  }
+
+  #sidebar.active {
+    width: 100%;
+  }
+
+  #sidebar.active .sidebar-header {
+    transform: scale(1);
+    font-size: 1em;
+    margin-left: 0;
+  }
+
+  #sidebar ul {
+    display:flex;
+    flex-flow: row wrap;
+  }
+
+  #sidebar ul li {
+    display:flex;
+    flex-flow: column;
+    align-items: center;
+    flex-grow: 1;
+    height: 92px;
+  }
+
+  #sidebar ul li:nth-child(1){
+    display: none;
+  }
+
+  .section-icon {
+    margin-left: 0;
+  }
+  .sidebar-header{
+    margin-left: 0;
+    font-size: 1em;
+  }
+}
+/*TODO: remove animation on hover over router active*/
+.link-active{
+  background: #2d6d89;
+  color:white;
+}
+
+#sidebar ul li.link-active:hover, #sidebar ul li.link-active:focus{
+  color: white;
+  background: #2d6d89;
+}

@@ -1,0 +1,59 @@
+<div class="container p-4" [@enterAnimation]>
+  <!-- CREATE LABEL -->
+  <div class="create-container bg-gunmetal p-4">
+
+    <div class="card-header">
+      <h2>New room!</h2>
+    </div>
+    <!-- NAME CONTROL -->
+    <form #room [formGroup]="roomForm">
+      <label for="quiz-name">Name your room:</label>
+      <input formControlName="roomName" type="text" class="form-input" id="quiz-name" placeholder="Name">
+      <!-- Error messages -->
+      <div class="position-relative">
+        <small class="text-danger error"
+               *ngIf="!roomForm.controls['roomName'].valid && roomForm.controls['roomName'].touched">
+          Room name must be specified.
+        </small>
+      </div>
+      <label for="players-number">Choose number of players:</label>
+      <select formControlName="usersNumber" id="players-number" class="bg-gunmetal form-input">
+        <option value="0">Chose number</option>
+        <option class="bg-gunmetal" *ngFor="let number of [2,3,4]" value={{number}}>
+          {{number}}
+        </option>
+      </select>
+      <!-- Error messages -->
+      <div class="position-relative">
+        <small class="text-danger error"
+               *ngIf="!roomForm.controls['usersNumber'].valid && roomForm.controls['usersNumber'].touched">
+          Choose number of players.
+        </small>
+      </div>
+      <label for="players-number">Choose quiz:</label>
+      <select formControlName="chosenQuiz" id="quiz" class="bg-gunmetal form-input">
+        <option value="0">Chose quiz</option>
+        <option class="bg-gunmetal" *ngFor="let quiz of quizList" value={{quiz.quizId}}>
+          {{quiz.quizId}}
+        </option>
+      </select>
+      <!-- Error messages -->
+      <div class="position-relative">
+        <small class="text-danger error"
+               *ngIf="!roomForm.controls['chosenQuiz'].valid && roomForm.controls['chosenQuiz'].touched">
+          Choose quiz to solve.
+        </small>
+      </div>
+    </form>
+  </div>
+  <div class="d-flex flex-row">
+    <div class="create-container bg-gunmetal mt-4 add-circle d-flex flex-grow-1">
+      <a (click)="roomForm.valid && createRoom()">
+        <i class="fas fa-external-link-square-alt"></i>
+        <span>Create room</span>
+      </a>
+    </div>
+  </div>
+
+</div>
+

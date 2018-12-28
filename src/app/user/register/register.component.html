@@ -1,0 +1,84 @@
+<div class="container" [@enterAnimation]>
+  <div class="d-flex flex-column flex-md-row register bg-gunmetal">
+
+    <!-- IMAGE -->
+    <div class="flex-shrink-0 sign-up-form position-relative d-flex justify-content-center">
+      <h4 class="position-relative log-in-title p-2">Already have an account?</h4>
+
+      <div class="book-image"></div>
+      <button routerLink="/login" type="submit" class="log-in-button align-self-end hvr-pop">Log in!
+      </button>
+    </div>
+
+    <form id="register-container" class="d-flex flex-column align-items-center justify-content-center position-relative"
+          [formGroup]="registerForm" (submit)="register()" [@fadeInOut]>
+      <h4 class="text-white pl-4 pr-4 sign-in-title">Create new account</h4>
+      <!-- Email form -->
+      <div class="w-100 register-inputs">
+        <input type="email" class="form-input" autocomplete='email'
+               formControlName="email" id="inputEmail" aria-describedby="emailHelp"
+               placeholder="Enter email" required>
+        <!-- Error messages -->
+        <val-err [errors]="email.errors" [touched]="email.touched">
+          <small *error="'required'">
+            Email is required.
+          </small>
+          <small *error="'email'">
+            Email must be valid.
+          </small>
+          <small *error="'emailNotAvailable'">
+            Email is already taken.
+          </small>
+        </val-err>
+        <div style="margin: 25px"></div>
+        <!-- Password form -->
+        <input type="password" class="form-input" autocomplete="new-password" formControlName="password" id="password"
+               placeholder="Password">
+        <!-- Error messages -->
+        <val-err [errors]="password.errors" [touched]="password.touched">
+          <small *error="'required'">You need to provide password.</small>
+        </val-err>
+        <div style="margin: 25px"></div>
+        <!-- Confirm password form -->
+        <input type="password" class="form-input" autocomplete="new-password" formControlName="confirmPassword"
+               id="confirmPassword"
+               placeholder="Confirm password">
+        <!-- Error messages -->
+        <div class="position-relative">
+          <val-err [errors]="confirmPassword.errors" [touched]="confirmPassword.touched">
+            <small *error="'required'">You need to confirm your password.</small>
+            <small *error="'MatchPassword'">Passwords do not match.</small>
+          </val-err>
+        </div>
+        <div style="margin: 25px"></div>
+      </div>
+      <!--Submit button -->
+      <input type="submit" class="register-button bg-main mt-3"
+             [class.hvr-pop]="registerForm.valid" value="Create Account">
+
+    </form>
+
+  </div>
+
+  <!--TODO: move it to separate reusable component-->
+  <!-- Modal with register errors -->
+  <div class="modal fade" id="registerError" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {{errorMessage}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

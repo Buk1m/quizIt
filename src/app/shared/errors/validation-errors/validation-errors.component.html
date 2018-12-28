@@ -1,0 +1,8 @@
+<!--suppress UnnecessaryLabelJS, SpellCheckingInspection -->
+<ng-content></ng-content>
+<small *error="'minlength'; Override: false; let error">Minimum length is {{error.requiredLength}}</small>
+<small *error="'maxlength'; Override: false; let error">Maximum length is {{error.requiredLength}}</small>
+<small *error="'email'; Override: false;">Invalid e-mail format</small>
+<small *error="'required';  Override: false;">This field is required</small>
+<small *error="'pattern'; Override: false;">Input format is invalid</small>
+<div class="mb-4"></div>

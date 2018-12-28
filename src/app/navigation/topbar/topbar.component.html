@@ -1,0 +1,20 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark text-center">
+  <a routerLink="/" class="navbar-brand nav-item text-white site-title">
+    <img src="../../../assets/question-mark-logo.png" width="50" height="50" class="d-inline-block align-top" alt="">
+    <span class="ml-3 title">QuizIt</span>
+  </a>
+  <div class="ml-auto">
+    <a *ngIf="!authenticationService.isLoggedIn()" routerLink="/register" class="nav-item btn btn-outline-light m-2">
+      Register
+    </a>
+    <a *ngIf="!authenticationService.isLoggedIn()" routerLink="/login" class="nav-item btn btn-outline-light m-2">Login
+    </a>
+    <a *ngIf="authenticationService.isLoggedIn()" (click)="authenticationService.logout()"
+       class="nav-item btn btn-outline-light m-2 text-white">Logout
+    </a>
+    <a *ngIf="authenticationService.isLoggedIn()" routerLink="/profile"
+       class="nav-item btn btn-outline-light m-2 text-white">Profile
+    </a>
+  </div>
+</nav>
+

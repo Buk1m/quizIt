@@ -1,7 +1,16 @@
 <div class="wrapper">
   <app-sidebar id="sidebar"></app-sidebar>
-  <div class="page-content">
+
+  <!--DESKTOP LAYOUT-->
+  <div *ngIf="!mobile" class="page-content">
     <app-topbar></app-topbar>
-    <router-outlet></router-outlet>
+    <router-outlet *ngIf="!mobile"></router-outlet>
   </div>
+
+  <!--MOBILE LAYOUT-->
+  <app-topbar id="navigation" *ngIf="mobile"></app-topbar>
+  <div  *ngIf="mobile" id="content">
+    <router-outlet *ngIf="mobile"></router-outlet>
+  </div>
+
 </div>
