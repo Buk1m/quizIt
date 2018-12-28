@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, Input, Output, Renderer2, ViewChild} from '@angular/core'
+import {Component, ElementRef, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-paging',
@@ -17,7 +17,7 @@ export class PagingComponent {
   @Input() maxSize = 4;
   @Output() pageChange: EventEmitter<number> = new EventEmitter<number>();
 
-  constructor(private rd: Renderer2) {
+  constructor() {
 
   }
 

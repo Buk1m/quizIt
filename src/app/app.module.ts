@@ -23,6 +23,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ProfileComponent} from './user/profile/profile.component';
 import {PagingComponent} from './room/room-list/paging/paging.component';
 import {NgxPaginationModule, PaginationService} from 'ngx-pagination';
+import {ErrorsModule} from './shared/errors/errors.module';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import {NgxPaginationModule, PaginationService} from 'ngx-pagination';
     PagingComponent,
   ],
   imports: [
+    ErrorsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

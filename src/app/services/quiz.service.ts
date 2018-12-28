@@ -15,7 +15,7 @@ export class QuizService {
   }
 
   postQuiz(quiz: Quiz) {
-    let url = this.baseUrl;
+    const url = this.baseUrl;
     return this.http.post<Quiz>(
       url,
       quiz,

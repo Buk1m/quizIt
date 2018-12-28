@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../../services/authentication.service';
 import {appear, fade} from '../../animations';
+import {ValidationService} from '../../shared/errors/validation-errors/validation.service';
 
 declare var $: any;
 
@@ -18,13 +19,14 @@ export class LoginComponent {
   errorMessage: string;
 
   constructor(
+    private validationService: ValidationService,
     private formBuilder: FormBuilder,
     private authenticationService: AuthenticationService,
     private router: Router) {
     this.loginForm = formBuilder.group(
       {
-        username: ['', Validators.required],
-        password: ['', Validators.required]
+        username: ['', {validators: [Validators.required, Validators.email], updateOn: 'blur'}],
+        password: ['', {validators: Validators.required, updateOn: 'blur'}]
       }
     );
   }
@@ -34,23 +36,28 @@ export class LoginComponent {
   }
 
   loginUser(): void {
-    this.authenticationService.login({
-      EMail: this.username.value.toString().toLocaleLowerCase(),
-      Password: this.password.value
-    }).subscribe(() => {
-      this.router.navigateByUrl('/');
-    }, (err) => {
-      this.errorMessage = JSON.parse(err.error).message;
-      this.openModal();
-    });
+    if (this.loginForm.valid) {
+      this.authenticationService.login({
+        EMail: this.username.value.toString().toLocaleLowerCase(),
+        Password: this.password.value
+      }).subscribe(() => {
+        this.router.navigateByUrl('/');
+      }, (err) => {
+        this.errorMessage = JSON.parse(err.error).message;
+        this.openModal();
+      });
+    } else {
+      this.validationService.validateAllFormFields(this.loginForm);
+    }
+
   }
 
   // Login form controls template accessors
-  get username() {
+  get username(): AbstractControl {
     return this.loginForm.get('username');
   }
 
-  get password() {
+  get password(): AbstractControl {
     return this.loginForm.get('password');
   }
 }

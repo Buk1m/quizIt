@@ -1,11 +1,12 @@
 import {Component} from '@angular/core';
-import {AbstractControl, AsyncValidatorFn, FormBuilder, FormGroup, ValidationErrors, Validators} from '@angular/forms';
+import {AbstractControl, AsyncValidatorFn, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
 import {Observable} from 'rxjs/internal/Observable';
 import {AuthenticationService, TokenPayload} from '../../services/authentication.service';
 import {Router} from '@angular/router';
 import {of, timer} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 import {appear, fade} from '../../animations';
+import {ValidationService} from '../../shared/errors/validation-errors/validation.service';
 
 declare var $: any;
 
@@ -21,31 +22,39 @@ export class RegisterComponent {
   errorMessage: string;
 
   constructor(
+    private validationService: ValidationService,
     private formBuilder: FormBuilder,
     private authenticationService: AuthenticationService,
     private router: Router,
   ) {
     this.registerForm = formBuilder.group({
-      password: [
-        '', [
-          Validators.required,
-          Validators.maxLength(25),
-          Validators.minLength(6)
-        ]
-      ], confirmPassword: [
-        '', {
+      password: new FormControl(
+        null,
+        {
+          validators: [
+            Validators.required,
+            Validators.maxLength(25),
+            Validators.minLength(6),
+          ], updateOn: 'blur'
+        }),
+      confirmPassword: new FormControl(
+        null,
+        {
           validators: [Validators.required],
           asyncValidators: [
             matchingPasswordsValidator(this)
-          ]
+          ], updateOn: 'blur'
+        }),
+      email: new FormControl(
+        null,
+        {
+          validators: [
+            Validators.maxLength(255),
+            Validators.required, Validators.email
+          ], updateOn: 'blur'
         }
-      ], email: [
-        '', [
-          Validators.maxLength(255),
-          Validators.required, Validators.email
-        ]
-      ]
-    }, );
+      )
+    });
 
     this.registerForm.controls['password'].valueChanges
       .subscribe(() => this.registerForm.controls['confirmPassword'].updateValueAndValidity());
@@ -57,20 +66,26 @@ export class RegisterComponent {
   }
 
   register() {
-    const tokenPayload: TokenPayload = {
-      EMail: this.registerForm.controls['email'].value.toString().toLocaleLowerCase(),
-      Password: this.registerForm.controls['password'].value,
-    };
+    if (this.registerForm.valid) {
 
-    this.authenticationService.register(tokenPayload)
-      .subscribe((res) => {
-        if (res.id) {
-          this.router.navigateByUrl('/login');
-        }
-      }, (err) => {
-        this.errorMessage = JSON.parse(err.error).message;
-        this.openModal();
-      });
+
+      const tokenPayload: TokenPayload = {
+        EMail: this.registerForm.controls['email'].value.toString().toLocaleLowerCase(),
+        Password: this.registerForm.controls['password'].value,
+      };
+
+      this.authenticationService.register(tokenPayload)
+        .subscribe((res) => {
+          if (res.id) {
+            this.router.navigateByUrl('/login');
+          }
+        }, (err) => {
+          this.errorMessage = JSON.parse(err.error).message;
+          this.openModal();
+        });
+    } else {
+      this.validationService.validateAllFormFields(this.registerForm);
+    }
   }
 
   // Accessors for form controls

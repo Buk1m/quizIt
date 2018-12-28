@@ -3,7 +3,7 @@
 
     <!-- IMAGE -->
     <div class="flex-shrink-0 sign-up-form position-relative d-flex flex-wrap justify-content-center">
-      <h4 class="position-relative sign-up-title p-2" >Join our community!</h4>
+      <h4 class="position-relative sign-up-title p-2">Join our community!</h4>
 
       <div class="book-image"></div>
       <button routerLink="/register" type="submit" class="sign-up align-self-end hvr-pop">Sign up & start solving!
@@ -12,7 +12,8 @@
 
     <!--LOGIN FORM-->
 
-    <form #login id="login-container" class="d-flex flex-column align-items-center justify-content-center position-relative"
+    <form #login id="login-container"
+          class="d-flex flex-column align-items-center justify-content-center position-relative"
           [formGroup]="loginForm"
           (ngSubmit)="loginUser()"
           [@enterAnimation]>
@@ -22,34 +23,19 @@
       <!-- Username form -->
 
       <div class="w-100 login-inputs">
-        <input formControlName="username" class="form-input" id="inputLogin"
-               aria-describedby="emailHelp"
-               placeholder="E-mail" autocomplete="on"
-               [ngClass]="!username.valid && username.touched ? 'is-invalid' : ''">
-        <!-- Error messages -->
-        <div class="position-relative">
-          <small class="text-danger error" [@fadeInOut]
-                 *ngIf="!loginForm.controls['username'].valid && loginForm.controls['username'].touched">
-            Username must be specified.
-          </small>
-        </div>
+        <input class="default-control form-input" formControlName="username" id="inputLogin"
+        aria-describedby="emailHelp"
+        placeholder="E-mail" autocomplete="on"
+        [ngClass]="!username.valid && username.touched ? 'is-invalid' : ''">
+        <val-err [errors]="username.errors" [touched]="username.touched"></val-err>
         <div style="margin: 25px"></div>
 
         <input formControlName="password" type="password" class="form-input" id="InputPassword" placeholder="Password"
                autocomplete="password" [ngClass]="!password.valid && password.touched ? 'is-invalid' : ''">
-        <!-- Error messages -->
-        <div class="position-relative">
-          <small class="text-danger error" [@fadeInOut]
-                 *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched">
-            You need to provide password.
-          </small>
-        </div>
+        <val-err [errors]="password.errors" [touched]="password.touched"></val-err>
 
       </div>
-
-      <!-- Submit button -->
-      <input type="submit" class="login-button bg-main mt-3" [class.hvr-pop]="loginForm.valid" [class.invalid-form]="!loginForm.valid"
-             [disabled]="!loginForm.valid" value="Sign in!">
+      <input type="submit" class="login-button bg-main mt-3" [class.hvr-pop]="loginForm.valid" value="Sign in!">
     </form>
   </div>
 </div>

@@ -73,6 +73,7 @@
 }
 
 
+/*TODO: change animation for mobile, learn how to disable animation or move it to Angular animations!*/
 /* Bounce To Right */
 #sidebar ul li {
   vertical-align: middle;

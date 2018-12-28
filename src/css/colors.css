@@ -1,0 +1,64 @@
+
+.bg-main{
+  background-color: rgb(53, 123, 158);
+}
+
+.bg-main-darker{
+  background: #2d6d89;
+}
+
+.bg-grape {
+  background: #94618E
+}
+
+.bg-eggplant {
+  background: #49274A;
+}
+
+.bg-sand {
+  background: #F4DECB;
+}
+
+.bg-shell {
+  background: #F8EEE7;
+}
+
+.bg-navy {
+  background: #18121E;
+}
+
+.bg-gunmetal {
+  background: #233237;
+}
+
+.bg-warm-yellow {
+  background: #EAC67A;
+}
+
+.color-grape {
+  color: #94618E
+}
+
+.color-eggplant {
+  color: #49274A;
+}
+
+.color-sand {
+  color: #F4DECB;
+}
+
+.color-shell {
+  color: #F8EEE7;
+}
+
+.color-navy {
+  color: #18121E;
+}
+
+.color-gunmetal {
+  color: #233237;
+}
+
+.color-warm-yellow {
+  color: #EAC67A;
+}

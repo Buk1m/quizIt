@@ -1,4 +1,4 @@
-<div class="container register-component" [@enterAnimation]>
+<div class="container" [@enterAnimation]>
   <div class="d-flex flex-column flex-md-row register bg-gunmetal">
 
     <!-- IMAGE -->
@@ -16,60 +16,45 @@
       <!-- Email form -->
       <div class="w-100 register-inputs">
         <input type="email" class="form-input" autocomplete='email'
-               [ngClass]="email.invalid && email.touched ? 'is-invalid' : ''"
                formControlName="email" id="inputEmail" aria-describedby="emailHelp"
                placeholder="Enter email" required>
         <!-- Error messages -->
-        <div class="position-relative">
-          <small class="text-danger" [@fadeInOut]
-                 *ngIf="email.hasError('required') && email.touched">
+        <val-err [errors]="email.errors" [touched]="email.touched">
+          <small *error="'required'">
             Email is required.
           </small>
-          <small class="text-danger" [@fadeInOut]
-                 *ngIf="email.hasError('email') && email.touched">
+          <small *error="'email'">
             Email must be valid.
           </small>
-          <small class="text-danger" [@fadeInOut]
-                 *ngIf="email.hasError('emailNotAvailable') && email.touched">
+          <small *error="'emailNotAvailable'">
             Email is already taken.
           </small>
-        </div>
+        </val-err>
         <div style="margin: 25px"></div>
         <!-- Password form -->
         <input type="password" class="form-input" autocomplete="new-password" formControlName="password" id="password"
-               placeholder="Password"
-               [ngClass]="password.invalid && password.touched ? 'is-invalid' : ''">
+               placeholder="Password">
         <!-- Error messages -->
-        <div class="position-relative">
-          <small class="text-danger" [@fadeInOut]
-                 *ngIf="password.invalid && password.touched ">
-            You need to provide password.
-          </small>
-        </div>
-
+        <val-err [errors]="password.errors" [touched]="password.touched">
+          <small *error="'required'">You need to provide password.</small>
+        </val-err>
         <div style="margin: 25px"></div>
         <!-- Confirm password form -->
         <input type="password" class="form-input" autocomplete="new-password" formControlName="confirmPassword"
                id="confirmPassword"
-               placeholder="Confirm password"
-               [ngClass]="(confirmPassword.hasError('required') || confirmPassword.hasError('MatchPassword')) && confirmPassword.touched ? 'is-invalid' : ''">
+               placeholder="Confirm password">
         <!-- Error messages -->
         <div class="position-relative">
-          <small class="text-danger" [@fadeInOut]
-                 *ngIf="confirmPassword.hasError('required') && confirmPassword.touched ">
-            You need to confirm your password.
-          </small>
-          <small class="text-danger" [@fadeInOut]
-                 *ngIf="confirmPassword.hasError('MatchPassword') && confirmPassword.touched ">
-            Passwords do not match.
-          </small>
+          <val-err [errors]="confirmPassword.errors" [touched]="confirmPassword.touched">
+            <small *error="'required'">You need to confirm your password.</small>
+            <small *error="'MatchPassword'">Passwords do not match.</small>
+          </val-err>
         </div>
         <div style="margin: 25px"></div>
       </div>
       <!--Submit button -->
-      <input type="submit" class="register-button bg-main mt-3" [class.hvr-pop]="registerForm.valid"
-             [class.invalid-form]="!registerForm.valid"
-             [disabled]="!registerForm.valid" value="Create Account">
+      <input type="submit" class="register-button bg-main mt-3"
+             [class.hvr-pop]="registerForm.valid" value="Create Account">
 
     </form>
 

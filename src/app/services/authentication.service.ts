@@ -15,10 +15,6 @@ export class TokenPayload {
   Password: string;
 }
 
-export interface TokenResponse {
-  token: string;
-}
-
 @Injectable({
   providedIn: 'root'
 })
