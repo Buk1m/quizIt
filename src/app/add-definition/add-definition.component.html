@@ -1,8 +1,16 @@
+<div>
+  <input type="file" accept="image/png,image/jpeg" (change)="onFileSelected($event)"/>
+  <button type="submit" (click)="recognizeText()">
+    Send!
+  </button>
+</div>
+
 <div (mousedown)="isBtnPressed = true"
   (mouseup)="isBtnPressed = false"
+  *ngIf="selectedImage"
   class="flex-nowrap">
   <div id="selective-area">
-        <div class="text">
+        <div class="text" *ngIf="allWords.length > 0">
             <span [ngStyle]="{
                 'left.px': word.boundingBox[0],
                 'top.px': word.boundingBox[1],
@@ -17,7 +25,7 @@
                 *ngFor="let word of allWords">
               </span>
         </div>
-    <img (dragstart)="false" src="https://www.photoshopessentials.com/images/type/text-inside-text/new/photoshop-text-inside-text.gif">
+    <img (dragstart)="false" [src]="imageUrl">
   </div>
 
 </div>
